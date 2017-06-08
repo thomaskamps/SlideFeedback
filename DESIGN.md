@@ -6,20 +6,27 @@ This problem I want to solve by building an application. When the lecturer uses 
 
 This idea is born during one of my earlier courses, where my team developed an idea for a system that provides adaptive slides during lectures. The feedback was a part of this, but some lecturers showed interest in primarily this part of the system. This drove me to choose the feedback on slides as subject for this project.
 
-![student](doc/student.png "Student View")
+<img src="doc/student.png" alt="Student View" style="width: 500px;" />
 
 Here you can see the student-version of the app. The students logs in and has access to live lectures and previous lectures.
 
-![lecturer](doc/lecturer.png "Lecturer View")
+<img src="doc/lecturer.png" alt="Lecturer View" style="width: 500px;" />
 
 Here you can see the view for the lecturer, this person can select a lecture to play and while playing the lecture the feedback from the students will become available.
 
-![web](doc/web.png "Web View")
+<img src="doc/web.png" alt="Web View" style="width: 500px;" />
 
 Here you can see the web view of the application. This view is only for managing the slide-collection of a lecturer. I have chosen not to do this from the app since most lecturers have their slideshows only on their PCs, and first having to transfer them to their phones/tablets would be very user-unfriendly.
 
 For all this to work I need a way for real-time bidirectional event-based communication. For this purpose I will use [Socket.IO](https://www.socket.io).
 I will further need a server for all clients to connect to, and to process and store the slideshows. For this I will use a VPS from [DigitalOcean](https://www.digitalocean.com), installed with [Ubuntu](https://www.ubuntu.com) and [Python](https://python.org) with libraries [[Flask](http://flask.pocoo.org), [PyPDF2](https://pypi.python.org/pypi/PyPDF2/1.26.0), [Socket.IO](https://pypi.python.org/pypi/python-socketio)].
-For authentication and database purposes I will make use of [Firebase](https://firebase.google.com). 
 
-To make a MVP some parts of the idea outlined above can be omitted. Primarily the function for students to look back at previous lectures.
+For authentication and database purposes I will make use of [Firebase](https://firebase.google.com). This database will be used to store information on users and slideshows, as can be seen in the following image:
+
+<img src="doc/firebase.png" alt="Firebase Schema" style="width: 300px;" />
+
+The necessary real-time communication (next/previous slide, available slides and feedback) will be provided by Socket.IO. This will require some further investigation as this topic is new to me.
+
+When we look at the code for the app itself the MVC-principle will be used, although this is almost forced on you by Apple :-). Every screen in the UI gets its own UIViewController. Some extensions will be used to implement specific functions, as for the spacing and sizing of the UIWebView or displaying alerts in a UIViewcontroller. Firebase and Socket.IO will both get a model/manager in the form of a singleton, to prevent multiple connections etc.
+
+
