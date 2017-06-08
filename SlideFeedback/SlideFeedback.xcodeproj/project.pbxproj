@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE106B8A1EE96B5F00799305 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE106B891EE96B5F00799305 /* SocketIOManager.swift */; };
+		CE106B8C1EE9792C00799305 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE106B8B1EE9792C00799305 /* FirebaseManager.swift */; };
+		CE106B8E1EE97A4D00799305 /* HideKeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE106B8D1EE97A4D00799305 /* HideKeyboardExtension.swift */; };
+		CE106B901EE97B5700799305 /* AlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE106B8F1EE97B5700799305 /* AlertExtension.swift */; };
+		CE106B921EE97C9500799305 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE106B911EE97C9500799305 /* GoogleService-Info.plist */; };
+		CE106B941EE987D700799305 /* SlidelistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE106B931EE987D700799305 /* SlidelistViewController.swift */; };
+		CE106B961EE98B6500799305 /* SlideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE106B951EE98B6500799305 /* SlideTableViewCell.swift */; };
 		CE9D01791EE82AD2005CD1D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D01781EE82AD2005CD1D5 /* AppDelegate.swift */; };
 		CE9D017B1EE82AD2005CD1D5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D017A1EE82AD2005CD1D5 /* LoginViewController.swift */; };
 		CE9D017E1EE82AD2005CD1D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE9D017C1EE82AD2005CD1D5 /* Main.storyboard */; };
@@ -15,9 +22,20 @@
 		CE9D018B1EE82B45005CD1D5 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D018A1EE82B45005CD1D5 /* RegisterViewController.swift */; };
 		CE9D018F1EE8A5CC005CD1D5 /* webViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D018E1EE8A5CC005CD1D5 /* webViewExtension.swift */; };
 		CEA07D311EE8B12600142EC5 /* SlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA07D301EE8B12600142EC5 /* SlideViewController.swift */; };
+		F30106CE0947A9F64655DC9B /* Pods_SlideFeedback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF09D8CFDB1A4708FE8EB179 /* Pods_SlideFeedback.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		60F933A8129712BD126426F4 /* Pods-SlideFeedback.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlideFeedback.release.xcconfig"; path = "Pods/Target Support Files/Pods-SlideFeedback/Pods-SlideFeedback.release.xcconfig"; sourceTree = "<group>"; };
+		AF09D8CFDB1A4708FE8EB179 /* Pods_SlideFeedback.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlideFeedback.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9C3E75D267EE3E31C10D47E /* Pods-SlideFeedback.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlideFeedback.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SlideFeedback/Pods-SlideFeedback.debug.xcconfig"; sourceTree = "<group>"; };
+		CE106B891EE96B5F00799305 /* SocketIOManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
+		CE106B8B1EE9792C00799305 /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		CE106B8D1EE97A4D00799305 /* HideKeyboardExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HideKeyboardExtension.swift; sourceTree = "<group>"; };
+		CE106B8F1EE97B5700799305 /* AlertExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertExtension.swift; sourceTree = "<group>"; };
+		CE106B911EE97C9500799305 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CE106B931EE987D700799305 /* SlidelistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidelistViewController.swift; sourceTree = "<group>"; };
+		CE106B951EE98B6500799305 /* SlideTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideTableViewCell.swift; sourceTree = "<group>"; };
 		CE9D01751EE82AD2005CD1D5 /* SlideFeedback.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlideFeedback.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE9D01781EE82AD2005CD1D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE9D017A1EE82AD2005CD1D5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F30106CE0947A9F64655DC9B /* Pods_SlideFeedback.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +65,8 @@
 			children = (
 				CE9D01771EE82AD2005CD1D5 /* SlideFeedback */,
 				CE9D01761EE82AD2005CD1D5 /* Products */,
+				F1E4EAA39E0C782B60F0B85C /* Pods */,
+				DAB632ACE29A04D914DDC339 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,12 +86,36 @@
 				CE9D017A1EE82AD2005CD1D5 /* LoginViewController.swift */,
 				CE9D018A1EE82B45005CD1D5 /* RegisterViewController.swift */,
 				CE9D017C1EE82AD2005CD1D5 /* Main.storyboard */,
+				CE106B951EE98B6500799305 /* SlideTableViewCell.swift */,
+				CE106B931EE987D700799305 /* SlidelistViewController.swift */,
+				CE106B891EE96B5F00799305 /* SocketIOManager.swift */,
+				CE106B8D1EE97A4D00799305 /* HideKeyboardExtension.swift */,
+				CE106B8F1EE97B5700799305 /* AlertExtension.swift */,
+				CE106B8B1EE9792C00799305 /* FirebaseManager.swift */,
 				CE9D018E1EE8A5CC005CD1D5 /* webViewExtension.swift */,
 				CE9D017F1EE82AD2005CD1D5 /* Assets.xcassets */,
 				CE9D01811EE82AD2005CD1D5 /* LaunchScreen.storyboard */,
+				CE106B911EE97C9500799305 /* GoogleService-Info.plist */,
 				CE9D01841EE82AD2005CD1D5 /* Info.plist */,
 			);
 			path = SlideFeedback;
+			sourceTree = "<group>";
+		};
+		DAB632ACE29A04D914DDC339 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AF09D8CFDB1A4708FE8EB179 /* Pods_SlideFeedback.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F1E4EAA39E0C782B60F0B85C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C9C3E75D267EE3E31C10D47E /* Pods-SlideFeedback.debug.xcconfig */,
+				60F933A8129712BD126426F4 /* Pods-SlideFeedback.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,9 +125,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE9D01871EE82AD2005CD1D5 /* Build configuration list for PBXNativeTarget "SlideFeedback" */;
 			buildPhases = (
+				6730C6BEDC81ACC9C552013B /* [CP] Check Pods Manifest.lock */,
 				CE9D01711EE82AD2005CD1D5 /* Sources */,
 				CE9D01721EE82AD2005CD1D5 /* Frameworks */,
 				CE9D01731EE82AD2005CD1D5 /* Resources */,
+				883CE4D0E56D4AEB7D76B38A /* [CP] Embed Pods Frameworks */,
+				D13C558FF7CA90C6C0DFCEE6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -134,12 +182,61 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE9D01831EE82AD2005CD1D5 /* LaunchScreen.storyboard in Resources */,
+				CE106B921EE97C9500799305 /* GoogleService-Info.plist in Resources */,
 				CE9D01801EE82AD2005CD1D5 /* Assets.xcassets in Resources */,
 				CE9D017E1EE82AD2005CD1D5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6730C6BEDC81ACC9C552013B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		883CE4D0E56D4AEB7D76B38A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SlideFeedback/Pods-SlideFeedback-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D13C558FF7CA90C6C0DFCEE6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SlideFeedback/Pods-SlideFeedback-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CE9D01711EE82AD2005CD1D5 /* Sources */ = {
@@ -148,8 +245,14 @@
 			files = (
 				CE9D018F1EE8A5CC005CD1D5 /* webViewExtension.swift in Sources */,
 				CEA07D311EE8B12600142EC5 /* SlideViewController.swift in Sources */,
+				CE106B961EE98B6500799305 /* SlideTableViewCell.swift in Sources */,
+				CE106B941EE987D700799305 /* SlidelistViewController.swift in Sources */,
+				CE106B8C1EE9792C00799305 /* FirebaseManager.swift in Sources */,
 				CE9D018B1EE82B45005CD1D5 /* RegisterViewController.swift in Sources */,
 				CE9D017B1EE82AD2005CD1D5 /* LoginViewController.swift in Sources */,
+				CE106B8A1EE96B5F00799305 /* SocketIOManager.swift in Sources */,
+				CE106B8E1EE97A4D00799305 /* HideKeyboardExtension.swift in Sources */,
+				CE106B901EE97B5700799305 /* AlertExtension.swift in Sources */,
 				CE9D01791EE82AD2005CD1D5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,6 +376,7 @@
 		};
 		CE9D01881EE82AD2005CD1D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9C3E75D267EE3E31C10D47E /* Pods-SlideFeedback.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4W94L64SGM;
@@ -286,6 +390,7 @@
 		};
 		CE9D01891EE82AD2005CD1D5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60F933A8129712BD126426F4 /* Pods-SlideFeedback.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4W94L64SGM;

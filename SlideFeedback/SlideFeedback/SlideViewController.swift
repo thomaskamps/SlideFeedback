@@ -32,12 +32,15 @@ class SlideViewController: UIViewController, UIWebViewDelegate {
     let baseUrl = "http://app.thomaskamps.nl/static/uploads/"
     var currentPage = 0
     
+    let test = SocketIOManager.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.slideView.delegate = self
         slideViewLoad(urlString: buildUrlString(page: currentPage))
+        test.establishConnection()
     }
 
     override func didReceiveMemoryWarning() {
