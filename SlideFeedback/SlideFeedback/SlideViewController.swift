@@ -9,38 +9,32 @@
 import UIKit
 
 class SlideViewController: UIViewController, UIWebViewDelegate {
-
-    @IBAction func previousButton(_ sender: Any) {
-        if currentPage > 0 {
-            currentPage -= 1
-            slideViewLoad(urlString: buildUrlString(page: currentPage))
-        }
-    }
-    
-    @IBAction func nextButton(_ sender: Any) {
-        if currentPage < numPages {
-            currentPage += 1
-            slideViewLoad(urlString: buildUrlString(page: currentPage))
-        }
-    }
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var slideView: UIWebView!
     
-    var dirName = "3c10aeee-4a5b-4dd8-adb3-4b10836afa72"
-    var numPages = 100
-    let baseUrl = "http://app.thomaskamps.nl/static/uploads/"
-    var currentPage = 0
+    var dirName: String?
+    var numPages: Int?
+    let baseUrl = "http://app.thomaskamps.nl:8080/static/uploads/"
+    var currentPage: Int?
+    var name: String?
     
-    let test = SocketIOManager.sharedInstance
+    let sio = SocketIOManager.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.slideView.delegate = self
-        slideViewLoad(urlString: buildUrlString(page: currentPage))
-        test.establishConnection()
+        
+        if dirName != nil && numPages != nil && currentPage != nil {
+            slideViewLoad(urlString: buildUrlString(page: currentPage!))
+        }
+        
+        if name != nil {
+            sio.joinRoom(room: name!)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.changePage(notification:)), name: Notification.Name("changePage"), object: nil)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,7 +43,8 @@ class SlideViewController: UIViewController, UIWebViewDelegate {
     }
     
     func buildUrlString(page: Int) -> String {
-        let urlString = baseUrl+dirName+"/"+String(currentPage)+".pdf"
+        let urlString = baseUrl+dirName!+"/"+String(page)+".pdf"
+        print(urlString)
         return urlString
     }
     
@@ -66,6 +61,14 @@ class SlideViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         activityIndicator.startAnimating()
+    }
+    
+    func changePage(notification: Notification) {
+        if let temp = sio.rooms?[self.name!]?["currentPage"] {
+            self.currentPage = temp as! Int
+            slideViewLoad(urlString: buildUrlString(page: currentPage!))
+            
+        }
     }
     /*
     // MARK: - Navigation

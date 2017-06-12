@@ -141,6 +141,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cellLabel" destination="Opz-d6-Qto" id="d2z-4v-EAf"/>
+                                            <segue destination="dFE-eW-8dy" kind="show" identifier="startSlideSegue" id="yAd-Xw-iFF"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -270,34 +271,22 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ozk-d9-Ab3">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="65"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XuR-mm-gGR">
-                                        <rect key="frame" x="532" y="17" width="32" height="30"/>
-                                        <state key="normal" title="Next">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBI-sQ-JlJ">
+                                        <rect key="frame" x="8" y="17" width="64" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="&lt;- Back">
                                             <color key="titleColor" red="0.30196078430000001" green="0.31372549020000001" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="nextButton:" destination="dFE-eW-8dy" eventType="touchUpInside" id="OvR-yS-iOk"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KrH-gB-noA">
-                                        <rect key="frame" x="428" y="17" width="59" height="30"/>
-                                        <state key="normal" title="Previous">
-                                            <color key="titleColor" red="0.30196078430000001" green="0.31372549020000001" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="previousButton:" destination="dFE-eW-8dy" eventType="touchUpInside" id="MeB-QI-k9q"/>
+                                            <segue destination="IaF-hd-8wr" kind="show" id="fz6-p6-0I6"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.1843137255" green="0.69803921570000005" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="XuR-mm-gGR" firstAttribute="leading" secondItem="KrH-gB-noA" secondAttribute="trailing" constant="45" id="ROL-pw-xO9"/>
-                                    <constraint firstItem="KrH-gB-noA" firstAttribute="top" secondItem="Ozk-d9-Ab3" secondAttribute="top" constant="17" id="Rez-V3-GU1"/>
-                                    <constraint firstItem="XuR-mm-gGR" firstAttribute="leading" secondItem="KrH-gB-noA" secondAttribute="trailing" constant="45" id="Sa0-r1-iKL"/>
-                                    <constraint firstItem="KrH-gB-noA" firstAttribute="leading" secondItem="Ozk-d9-Ab3" secondAttribute="leading" constant="428" id="TT0-Cp-qU3"/>
-                                    <constraint firstAttribute="trailing" secondItem="XuR-mm-gGR" secondAttribute="trailing" constant="103" id="l2s-ew-neq"/>
+                                    <constraint firstItem="gBI-sQ-JlJ" firstAttribute="top" secondItem="Ozk-d9-Ab3" secondAttribute="top" constant="17" id="ABb-RS-oBU"/>
+                                    <constraint firstItem="gBI-sQ-JlJ" firstAttribute="leading" secondItem="Ozk-d9-Ab3" secondAttribute="leading" constant="8" id="SBW-mY-HrY"/>
                                     <constraint firstAttribute="height" constant="65" id="lix-IT-7dt"/>
-                                    <constraint firstItem="XuR-mm-gGR" firstAttribute="top" secondItem="Ozk-d9-Ab3" secondAttribute="top" constant="17" id="pT9-nA-09O"/>
                                 </constraints>
                             </view>
                             <webView contentMode="scaleAspectFit" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C10-Xt-NKo">
@@ -327,7 +316,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cBW-tw-vAi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="921" y="936"/>
+            <point key="canvasLocation" x="920.50781249999989" y="935.9375"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="fz6-p6-0I6"/>
+    </inferredMetricsTieBreakers>
 </document>
