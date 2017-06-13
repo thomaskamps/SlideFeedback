@@ -42,6 +42,12 @@ class SlideViewController: UIViewController, UIWebViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        if name != nil {
+            sio.leaveRoom(room: name!)
+        }
+    }
+    
     func buildUrlString(page: Int) -> String {
         let urlString = baseUrl+dirName!+"/"+String(page)+".pdf"
         print(urlString)

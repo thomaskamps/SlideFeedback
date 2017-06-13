@@ -64,7 +64,11 @@ class SocketIOManager {
                 NotificationCenter.default.post(name: Notification.Name("changePage"), object: nil)
             }
         }
-        
+    }
+    
+    func leaveRoom(room: String) {
+        print("leaveroom")
+        socket.emit("leave", room)
     }
         
     
