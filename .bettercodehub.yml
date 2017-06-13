@@ -1,0 +1,8 @@
+exclude:
+- /SlideFeedback/Pods/.*
+component_depth: 1
+languages:
+- objectivec
+- ruby
+- script
+- swift
