@@ -105,7 +105,7 @@
                                 <rect key="frame" x="0.0" y="65" width="1024" height="703"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Jta-tl-Zth">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Jta-tl-Zth">
                                 <rect key="frame" x="502" y="374" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
@@ -244,7 +244,7 @@
                                         <rect key="frame" x="0.0" y="28" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MfX-ns-f3l" id="7gk-4l-DwJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Opz-d6-Qto">
@@ -460,6 +460,7 @@
                         <outlet property="negativeFeedbackButton" destination="Kz0-Vg-9cw" id="Kdo-hp-fAj"/>
                         <outlet property="positiveFeedbackButton" destination="5Oq-cD-pWW" id="73V-J5-lRv"/>
                         <outlet property="slideView" destination="C10-Xt-NKo" id="cDB-0Z-Xqy"/>
+                        <segue destination="IaF-hd-8wr" kind="show" identifier="endSlideStudent" id="78I-cU-uQi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cBW-tw-vAi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -469,6 +470,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="evo-zU-OTf"/>
-        <segue reference="fz6-p6-0I6"/>
+        <segue reference="78I-cU-uQi"/>
     </inferredMetricsTieBreakers>
 </document>

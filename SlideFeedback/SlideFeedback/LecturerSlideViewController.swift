@@ -17,7 +17,7 @@ class LecturerSlideViewController: UIViewController, UIWebViewDelegate {
         if self.currentPage! < self.numPages! {
             self.currentPage! += 1
             slideViewLoad(urlString: buildUrlString(page: currentPage!))
-            sio.changePage(currentPage: currentPage!, room: name!)
+            sio.changePage(currentPage: currentPage!)
         }
     }
     
@@ -25,12 +25,12 @@ class LecturerSlideViewController: UIViewController, UIWebViewDelegate {
         if self.currentPage! > 0 {
             self.currentPage! -= 1
             slideViewLoad(urlString: buildUrlString(page: currentPage!))
-            sio.changePage(currentPage: currentPage!, room: name!)
+            sio.changePage(currentPage: currentPage!)
         }
     }
     
     @IBAction func endSlideButton(_ sender: Any) {
-        // do stuff
+        sio.endLecture()
     }
     
     var dirName: String?
@@ -48,7 +48,11 @@ class LecturerSlideViewController: UIViewController, UIWebViewDelegate {
         self.slideView.delegate = self
         
         if dirName != nil && numPages != nil && currentPage != nil {
+            sio.claimLecture(room: name!)
             slideViewLoad(urlString: buildUrlString(page: currentPage!))
+            NotificationCenter.default.addObserver(self, selector: #selector(self.endLecture(notification:)), name: Notification.Name("newRooms"), object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.receiveNegativeFeedback(notification:)), name: Notification.Name("receiveNegativeFeedback"), object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.receivePositiveFeedback(notification:)), name: Notification.Name("receivePositiveFeedback"), object: nil)
         }
     }
 
@@ -93,6 +97,18 @@ class LecturerSlideViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         activityIndicator.startAnimating()
+    }
+    
+    func endLecture(notification: Notification) {
+        self.performSegue(withIdentifier: "endSlideSegue", sender: nil)
+    }
+    
+    func receiveNegativeFeedback(notification: Notification) {
+        self.alert(title: "You received feedback", message: "Unfortunately it is negative")
+    }
+    
+    func receivePositiveFeedback(notification: Notification) {
+        self.alert(title: "You received feedback", message: "Yeah it is positive")
     }
 
 }

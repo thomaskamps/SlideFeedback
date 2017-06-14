@@ -64,6 +64,10 @@ class SocketIOManager {
                 NotificationCenter.default.post(name: Notification.Name("changePage"), object: nil)
             }
         }
+        
+        socket.on("endLecture") {data, ack in
+            NotificationCenter.default.post(name: Notification.Name("endSlides"), object: nil)
+        }
     }
     
     func leaveRoom(room: String) {
@@ -75,8 +79,29 @@ class SocketIOManager {
         socket.emit("feedback", ["feedback": feedback, "room": room])
     }
     
-    func changePage(currentPage: Int, room: String) {
-        socket.emit("changePage", ["currentPage": currentPage, "room": room])
+    func changePage(currentPage: Int) {
+        socket.emit("changePage", currentPage)
+    }
+    
+    func claimLecture(room: String) {
+        socket.emit("claimLecture", room)
+        
+        socket.on("feedback") {data, ack in
+            if data[0] as! String == "negative" {
+                NotificationCenter.default.post(name: Notification.Name("receiveNegativeFeedback"), object: nil)
+            }
+            if data[0] as! String == "positive" {
+                NotificationCenter.default.post(name: Notification.Name("receivePositiveFeedback"), object: nil)
+            }
+        }
+    }
+    
+    func endLecture() {
+        socket.emit("endLecture")
+        
+        socket.on("endLecture") {data, ack in
+            NotificationCenter.default.post(name: Notification.Name("endLecture"), object: nil)
+        }
     }
         
     

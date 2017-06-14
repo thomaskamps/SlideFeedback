@@ -36,6 +36,7 @@ class SlideViewController: UIViewController, UIWebViewDelegate {
         if name != nil {
             sio.joinRoom(room: name!)
             NotificationCenter.default.addObserver(self, selector: #selector(self.changePage(notification:)), name: Notification.Name("changePage"), object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.endSlides(notification:)), name: Notification.Name("endSlides"), object: nil)
         }
     }
 
@@ -93,6 +94,15 @@ class SlideViewController: UIViewController, UIWebViewDelegate {
         positiveFeedbackButton.isEnabled = false
         
         sio.sendFeedback(feedback: "positive", room: name!)
+    }
+    
+    func endSlides(notification: Notification) {
+        let alert = UIAlertController(title: "Lecture has been ended", message: "You will now be brought back to the overview", preferredStyle: .alert)
+        let oke = UIAlertAction(title: "Oke", style: .default, handler: {(action) -> Void in
+            self.performSegue(withIdentifier: "endSlideStudent", sender: nil)
+        })
+        alert.addAction(oke)
+        self.present(alert, animated: true, completion: nil)
     }
     /*
     // MARK: - Navigation
