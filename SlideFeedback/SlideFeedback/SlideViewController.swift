@@ -12,7 +12,9 @@ class SlideViewController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var slideView: UIWebView!
-    
+    @IBOutlet weak var negativeFeedbackButton: UIButton!
+    @IBOutlet weak var positiveFeedbackButton: UIButton!
+
     var dirName: String?
     var numPages: Int?
     let baseUrl = "http://app.thomaskamps.nl:8080/static/uploads/"
@@ -73,8 +75,24 @@ class SlideViewController: UIViewController, UIWebViewDelegate {
         if let temp = sio.rooms?[self.name!]?["currentPage"] {
             self.currentPage = temp as! Int
             slideViewLoad(urlString: buildUrlString(page: currentPage!))
+            negativeFeedbackButton.isEnabled = true
+            positiveFeedbackButton.isEnabled = true
             
         }
+    }
+    
+    @IBAction func negativeFeedbackAction(_ sender: Any) {
+        negativeFeedbackButton.isEnabled = false
+        positiveFeedbackButton.isEnabled = false
+        
+        sio.sendFeedback(feedback: "negative", room: name!)
+    }
+    
+    @IBAction func positiveFeedbackAction(_ sender: Any) {
+        negativeFeedbackButton.isEnabled = false
+        positiveFeedbackButton.isEnabled = false
+        
+        sio.sendFeedback(feedback: "positive", room: name!)
     }
     /*
     // MARK: - Navigation

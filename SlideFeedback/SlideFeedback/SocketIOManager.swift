@@ -12,7 +12,7 @@ import SocketIO
 class SocketIOManager {
     
     static let sharedInstance = SocketIOManager()
-    let socket = SocketIOClient(socketURL: URL(string: "http://app.thomaskamps.nl:8080")!, config: [.log(true), .forcePolling(true)])
+    private let socket = SocketIOClient(socketURL: URL(string: "http://app.thomaskamps.nl:8080")!, config: [.log(true), .forcePolling(true)])
     
     var rooms: [String:[String:Any]]?
     
@@ -69,6 +69,14 @@ class SocketIOManager {
     func leaveRoom(room: String) {
         print("leaveroom")
         socket.emit("leave", room)
+    }
+    
+    func sendFeedback(feedback: String, room: String) {
+        socket.emit("feedback", ["feedback": feedback, "room": room])
+    }
+    
+    func changePage(currentPage: Int, room: String) {
+        socket.emit("changePage", ["currentPage": currentPage, "room": room])
     }
         
     

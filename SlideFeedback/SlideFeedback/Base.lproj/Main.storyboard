@@ -10,6 +10,127 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Waiting View Controller-->
+        <scene sceneID="i4Q-LZ-TiK">
+            <objects>
+                <viewController id="c75-qp-dxT" customClass="WaitingViewController" customModule="SlideFeedback" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="abs-ag-Zny"/>
+                        <viewControllerLayoutGuide type="bottom" id="XWu-v5-Dfp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="a2F-5m-w2f">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Waiting for a lecture to start..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AjH-Nb-PF8">
+                                <rect key="frame" x="390" y="118" width="245" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="pzw-Ko-JrM">
+                                <rect key="frame" x="503" y="148" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="Y4k-7q-0sa" kind="show" identifier="LecturerStartSlideSegue" id="AI6-5o-U7F"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yaf-l4-dw0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1265.0390625" y="36.71875"/>
+        </scene>
+        <!--Lecturer Slide View Controller-->
+        <scene sceneID="rJm-3q-8Uy">
+            <objects>
+                <viewController id="Y4k-7q-0sa" customClass="LecturerSlideViewController" customModule="SlideFeedback" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="b6A-hb-cQd"/>
+                        <viewControllerLayoutGuide type="bottom" id="lxX-3z-Ujr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rHW-Fd-MMb">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MIg-R8-674">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="65"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Uo-Bf-Asw">
+                                        <rect key="frame" x="8" y="17" width="140" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="&lt;- End slideshow">
+                                            <color key="titleColor" red="0.30196078430000001" green="0.31372549020000001" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="endSlideButton:" destination="Y4k-7q-0sa" eventType="touchUpInside" id="2ek-Bb-7d4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9SK-CR-eUg">
+                                        <rect key="frame" x="331" y="17" width="94" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="&lt;- Previous">
+                                            <color key="titleColor" red="0.30196078430000001" green="0.31372549020000001" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="previousButton:" destination="Y4k-7q-0sa" eventType="touchUpInside" id="plk-eA-4Gp"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqv-pc-xBP">
+                                        <rect key="frame" x="443" y="17" width="62" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Next -&gt;">
+                                            <color key="titleColor" red="0.30196078430000001" green="0.31372549020000001" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextButton:" destination="Y4k-7q-0sa" eventType="touchUpInside" id="hB0-s2-y6e"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1843137255" green="0.69803921570000005" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="8Uo-Bf-Asw" firstAttribute="top" secondItem="MIg-R8-674" secondAttribute="top" constant="17" id="5Mf-zz-TRb"/>
+                                    <constraint firstItem="8Uo-Bf-Asw" firstAttribute="leading" secondItem="MIg-R8-674" secondAttribute="leading" constant="8" id="9L3-qG-JNv"/>
+                                    <constraint firstItem="9SK-CR-eUg" firstAttribute="top" secondItem="MIg-R8-674" secondAttribute="top" constant="17" id="ES7-Lk-QNI"/>
+                                    <constraint firstAttribute="height" constant="65" id="X2d-am-l3R"/>
+                                    <constraint firstItem="9SK-CR-eUg" firstAttribute="leading" secondItem="8Uo-Bf-Asw" secondAttribute="trailing" constant="183" id="eMU-De-QDH"/>
+                                    <constraint firstItem="Tqv-pc-xBP" firstAttribute="leading" secondItem="9SK-CR-eUg" secondAttribute="trailing" constant="18" id="fhj-7c-2DG"/>
+                                    <constraint firstItem="Tqv-pc-xBP" firstAttribute="top" secondItem="MIg-R8-674" secondAttribute="top" constant="17" id="xEo-Aq-dz8"/>
+                                </constraints>
+                            </view>
+                            <webView contentMode="scaleAspectFit" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ly0-8s-SGm">
+                                <rect key="frame" x="0.0" y="65" width="1024" height="703"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Jta-tl-Zth">
+                                <rect key="frame" x="502" y="374" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ly0-8s-SGm" firstAttribute="leading" secondItem="rHW-Fd-MMb" secondAttribute="leading" id="4Zr-X9-VwA"/>
+                            <constraint firstItem="lxX-3z-Ujr" firstAttribute="top" secondItem="ly0-8s-SGm" secondAttribute="bottom" id="BNw-Ck-uSB"/>
+                            <constraint firstAttribute="trailing" secondItem="MIg-R8-674" secondAttribute="trailing" id="F11-3t-79S"/>
+                            <constraint firstItem="ly0-8s-SGm" firstAttribute="top" secondItem="MIg-R8-674" secondAttribute="bottom" id="MMS-iG-VXL"/>
+                            <constraint firstItem="MIg-R8-674" firstAttribute="leading" secondItem="rHW-Fd-MMb" secondAttribute="leading" id="gj0-yw-y8Y"/>
+                            <constraint firstItem="MIg-R8-674" firstAttribute="top" secondItem="rHW-Fd-MMb" secondAttribute="top" id="wck-Vm-OYO"/>
+                            <constraint firstAttribute="trailing" secondItem="ly0-8s-SGm" secondAttribute="trailing" id="zr2-nr-x6q"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Jta-tl-Zth" id="7pF-TB-EVz"/>
+                        <outlet property="slideView" destination="ly0-8s-SGm" id="2y6-KX-dXj"/>
+                        <segue destination="c75-qp-dxT" kind="show" identifier="endSlideSegue" id="evo-zU-OTf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hcg-jp-5Nc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1265.0390625" y="935.9375"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -96,6 +217,7 @@
                         <outlet property="password" destination="xr5-bD-hsl" id="Ke1-sd-hcw"/>
                         <outlet property="userName" destination="uoC-z9-XfD" id="pEG-eS-KMz"/>
                         <segue destination="IaF-hd-8wr" kind="show" identifier="loginSegue" id="3wR-NC-Id6"/>
+                        <segue destination="c75-qp-dxT" kind="show" identifier="LecturerLoginSegue" id="b2x-xs-aYD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -281,12 +403,36 @@
                                             <segue destination="IaF-hd-8wr" kind="show" id="fz6-p6-0I6"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Oq-cD-pWW">
+                                        <rect key="frame" x="920" y="17" width="96" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="+ Feedback">
+                                            <color key="titleColor" red="0.30196078430000001" green="0.31372549020000001" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="positiveFeedbackAction:" destination="dFE-eW-8dy" eventType="touchUpInside" id="tJQ-sx-qXP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kz0-Vg-9cw">
+                                        <rect key="frame" x="757" y="17" width="93" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="- Feedback">
+                                            <color key="titleColor" red="0.30196078430000001" green="0.31372549020000001" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="negativeFeedbackAction:" destination="dFE-eW-8dy" eventType="touchUpInside" id="Nuy-Nc-fJn"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.1843137255" green="0.69803921570000005" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="gBI-sQ-JlJ" firstAttribute="top" secondItem="Ozk-d9-Ab3" secondAttribute="top" constant="17" id="ABb-RS-oBU"/>
+                                    <constraint firstAttribute="trailing" secondItem="5Oq-cD-pWW" secondAttribute="trailing" constant="8" id="KQq-cu-YPx"/>
                                     <constraint firstItem="gBI-sQ-JlJ" firstAttribute="leading" secondItem="Ozk-d9-Ab3" secondAttribute="leading" constant="8" id="SBW-mY-HrY"/>
+                                    <constraint firstItem="5Oq-cD-pWW" firstAttribute="top" secondItem="Ozk-d9-Ab3" secondAttribute="top" constant="17" id="dIO-GZ-f8I"/>
+                                    <constraint firstItem="Kz0-Vg-9cw" firstAttribute="top" secondItem="Ozk-d9-Ab3" secondAttribute="top" constant="17" id="jKc-4c-SXk"/>
                                     <constraint firstAttribute="height" constant="65" id="lix-IT-7dt"/>
+                                    <constraint firstItem="5Oq-cD-pWW" firstAttribute="leading" secondItem="Kz0-Vg-9cw" secondAttribute="trailing" constant="70" id="tM7-My-OzD"/>
                                 </constraints>
                             </view>
                             <webView contentMode="scaleAspectFit" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C10-Xt-NKo">
@@ -311,6 +457,8 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="cXU-ZD-TcL" id="en1-cZ-h7K"/>
+                        <outlet property="negativeFeedbackButton" destination="Kz0-Vg-9cw" id="Kdo-hp-fAj"/>
+                        <outlet property="positiveFeedbackButton" destination="5Oq-cD-pWW" id="73V-J5-lRv"/>
                         <outlet property="slideView" destination="C10-Xt-NKo" id="cDB-0Z-Xqy"/>
                     </connections>
                 </viewController>
@@ -320,6 +468,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="evo-zU-OTf"/>
         <segue reference="fz6-p6-0I6"/>
     </inferredMetricsTieBreakers>
 </document>

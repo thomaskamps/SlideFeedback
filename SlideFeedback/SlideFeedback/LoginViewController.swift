@@ -26,7 +26,18 @@ class LoginViewController: UIViewController {
             // If user is authenticated, perform segue to main app screen
             if user != nil {
                 self.db.userID = Auth.auth().currentUser?.uid
-                self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                self.db.ref.child("users").child(self.db.userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                    let value = snapshot.value as? NSDictionary
+                    let role = value?["role"] as? Int
+                    if role == 20 {
+                        self.performSegue(withIdentifier: "LecturerLoginSegue", sender: nil)
+                    } else {
+                        self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                    }
+                }) { (error) in
+                    print(error.localizedDescription)
+                }
+                
             }
         }
         
