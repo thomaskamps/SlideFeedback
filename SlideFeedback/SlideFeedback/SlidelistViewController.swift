@@ -44,13 +44,6 @@ extension SlidelistViewController: UITableViewDelegate {
         
         if segue.identifier == "startSlideSegue" {
             
-            /*let vc = segue.destination as? SlideViewController
-            let index = items?[(tableView.indexPathForSelectedRow?.row)!]
-            vc?.dirName = itemsInfo[index!]?["dirName"] as? String
-            vc?.numPages = itemsInfo[index!]?["numPages"] as? Int
-            vc?.currentPage = itemsInfo[index!]?["currentPage"] as? Int
-            vc?.name = itemsInfo[index!]?["name"] as? String*/
-            
             let dirName = sio.rooms[Array(sio.rooms.keys)[(tableView.indexPathForSelectedRow?.row)!]]?["dirName"] as? String
             sio.joinRoom(room: dirName!)
         }
