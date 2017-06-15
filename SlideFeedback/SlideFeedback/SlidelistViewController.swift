@@ -7,14 +7,8 @@
 //
 
 import UIKit
-import Firebase
-import SocketIO
 
 class SlidelistViewController: UIViewController {
-    
-    //var items: Array<String>?
-    var itemsInfo: [String: [String:Any]] = [:]
-    var items: Array<String>? = []
     
     let sio = SocketIOManager.sharedInstance
 
@@ -22,7 +16,7 @@ class SlidelistViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -35,19 +29,11 @@ class SlidelistViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if sio.rooms != nil {
-            self.itemsInfo = sio.rooms!
-            self.items = Array(self.itemsInfo.keys)
-            tableView.reloadData()
-        }
+        tableView.reloadData()
     }
     
     func newRooms(notification: Notification) {
-        if sio.rooms != nil {
-            self.itemsInfo = sio.rooms!
-            self.items = Array(self.itemsInfo.keys)
-            tableView.reloadData()
-        }
+        tableView.reloadData()
     }
     
 }
@@ -58,12 +44,15 @@ extension SlidelistViewController: UITableViewDelegate {
         
         if segue.identifier == "startSlideSegue" {
             
-            let vc = segue.destination as? SlideViewController
+            /*let vc = segue.destination as? SlideViewController
             let index = items?[(tableView.indexPathForSelectedRow?.row)!]
             vc?.dirName = itemsInfo[index!]?["dirName"] as? String
             vc?.numPages = itemsInfo[index!]?["numPages"] as? Int
             vc?.currentPage = itemsInfo[index!]?["currentPage"] as? Int
-            vc?.name = index
+            vc?.name = itemsInfo[index!]?["name"] as? String*/
+            
+            let dirName = sio.rooms[Array(sio.rooms.keys)[(tableView.indexPathForSelectedRow?.row)!]]?["dirName"] as? String
+            sio.joinRoom(room: dirName!)
         }
     }
     
@@ -72,24 +61,14 @@ extension SlidelistViewController: UITableViewDelegate {
 extension SlidelistViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if (items != nil) {
-            return items!.count
-        } else {
-            return 0
-        }
+        return sio.rooms.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "slideCell", for: indexPath) as! SlideTableViewCell
-        
-        if let temp = items {
-            cell.cellLabel.text = temp[indexPath.row]
-        } else {
-            print("error in items..")
-        }
-        
+        cell.cellLabel.text = sio.rooms[Array(sio.rooms.keys)[indexPath.row]]?["name"] as? String
+
         return cell
         
     }

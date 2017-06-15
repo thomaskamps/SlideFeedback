@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class LoginViewController: UIViewController {
     
@@ -17,51 +16,32 @@ class LoginViewController: UIViewController {
     var db: FirebaseManager!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // Authentication check
-        Auth.auth().addStateDidChangeListener() { auth, user in
-            
-            // If user is authenticated, perform segue to main app screen
-            if user != nil {
-                self.db.userID = Auth.auth().currentUser?.uid
-                self.db.ref.child("users").child(self.db.userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-                    let value = snapshot.value as? NSDictionary
-                    let role = value?["role"] as? Int
-                    if role == 20 {
-                        self.performSegue(withIdentifier: "LecturerLoginSegue", sender: nil)
-                    } else {
-                        self.performSegue(withIdentifier: "loginSegue", sender: nil)
-                    }
-                }) { (error) in
-                    print(error.localizedDescription)
-                }
-                
-            }
-        }
-        
         self.db = FirebaseManager.sharedInstance
         self.hideKeyboardWhenTappedAround()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.userStatusChanged(notification:)), name: Notification.Name("userStatusChanged"), object: nil)
     }
 
     override func didReceiveMemoryWarning() {
+        
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     func login() {
+        
         if userName.text! != "" && password.text! != "" {
-            Auth.auth().signIn(withEmail: userName.text!, password: password.text!) {(user, error) in
+            
+            do {
                 
-                if error == nil {
-                    
-                    self.db.userID = Auth.auth().currentUser?.uid
-                    
-                } else {
-                    
-                    self.alert(title: "Something went wrong", message: "Unfortunately something went wrong. Info: \(String(describing: error))")
-                }
+                try db.login(email: userName.text!, password: password.text!)
+                
+            } catch let error {
+                
+                self.alert(title: "Something went wrong..", message: String(describing: error))
             }
         } else {
             
@@ -70,11 +50,24 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func loginAction(_ sender: Any) {
+        
         login()
     }
     
     @IBAction func passwordFinished(_ sender: Any) {
+        
         login()
+    }
+    
+    func userStatusChanged(notification: Notification) {
+        if self.db.role == 20 {
+            
+            self.performSegue(withIdentifier: "LecturerLoginSegue", sender: nil)
+            
+        } else {
+            
+            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+        }
     }
 
 }

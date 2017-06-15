@@ -14,16 +14,51 @@ class FirebaseManager {
     static let sharedInstance = FirebaseManager()
     
     private init() {
+        
+        Auth.auth().addStateDidChangeListener() { auth, user in
+            
+            if user != nil {
+                
+                self.userID = Auth.auth().currentUser?.uid
+                
+                self.ref.child("users").child(self.userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                    
+                    let value = snapshot.value as? NSDictionary
+                    self.role = value?["role"] as? Int
+                    NotificationCenter.default.post(name: Notification.Name("userStatusChanged"), object: nil)
+
+                }) { (error) in
+                    
+                    print(error.localizedDescription)
+                }
+            }
+        }
+        
         userID = Auth.auth().currentUser?.uid
     }
     
     var ref = Database.database().reference()
     var userID: String?
+    var role: Int?
     
     // Log in and automatically set userID
     func login(email: String, password: String) throws {
-        Auth.auth().signIn(withEmail: email, password: password)
-        self.userID = Auth.auth().currentUser?.uid
+        
+        var saveError: Any?
+        
+        Auth.auth().signIn(withEmail: email, password: password) {(user, error) in
+            
+            saveError = error
+        }
+        
+        if saveError == nil {
+            
+            self.userID = Auth.auth().currentUser?.uid
+            
+        } else {
+            
+            throw saveError as! Error!
+        }
     }
     
     func logOut() throws {

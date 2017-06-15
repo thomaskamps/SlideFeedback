@@ -16,6 +16,7 @@
 		CE106B961EE98B6500799305 /* SlideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE106B951EE98B6500799305 /* SlideTableViewCell.swift */; };
 		CE8520B91EF14C760034DCC2 /* WaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8520B81EF14C760034DCC2 /* WaitingViewController.swift */; };
 		CE8520BB1EF165560034DCC2 /* LecturerSlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8520BA1EF165560034DCC2 /* LecturerSlideViewController.swift */; };
+		CE97D50F1EF29D8D0039BCF8 /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE97D50E1EF29D8D0039BCF8 /* Slide.swift */; };
 		CE9D01791EE82AD2005CD1D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D01781EE82AD2005CD1D5 /* AppDelegate.swift */; };
 		CE9D017B1EE82AD2005CD1D5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D017A1EE82AD2005CD1D5 /* LoginViewController.swift */; };
 		CE9D017E1EE82AD2005CD1D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE9D017C1EE82AD2005CD1D5 /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 		CE106B951EE98B6500799305 /* SlideTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideTableViewCell.swift; sourceTree = "<group>"; };
 		CE8520B81EF14C760034DCC2 /* WaitingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitingViewController.swift; sourceTree = "<group>"; };
 		CE8520BA1EF165560034DCC2 /* LecturerSlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturerSlideViewController.swift; sourceTree = "<group>"; };
+		CE97D50E1EF29D8D0039BCF8 /* Slide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		CE9D01751EE82AD2005CD1D5 /* SlideFeedback.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlideFeedback.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE9D01781EE82AD2005CD1D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE9D017A1EE82AD2005CD1D5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +66,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE97D5101EF2AF360039BCF8 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CEA07D301EE8B12600142EC5 /* SlideViewController.swift */,
+				CE9D017A1EE82AD2005CD1D5 /* LoginViewController.swift */,
+				CE9D018A1EE82B45005CD1D5 /* RegisterViewController.swift */,
+				CE8520BA1EF165560034DCC2 /* LecturerSlideViewController.swift */,
+				CE8520B81EF14C760034DCC2 /* WaitingViewController.swift */,
+				CE106B931EE987D700799305 /* SlidelistViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CE97D5111EF2AF840039BCF8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE106B8B1EE9792C00799305 /* FirebaseManager.swift */,
+				CE106B891EE96B5F00799305 /* SocketIOManager.swift */,
+				CE97D50E1EF29D8D0039BCF8 /* Slide.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		CE97D5121EF2AF890039BCF8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D018E1EE8A5CC005CD1D5 /* webViewExtension.swift */,
+				CE106B8D1EE97A4D00799305 /* HideKeyboardExtension.swift */,
+				CE106B8F1EE97B5700799305 /* AlertExtension.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		CE9D016C1EE82AD2005CD1D5 = {
 			isa = PBXGroup;
 			children = (
@@ -85,20 +120,12 @@
 		CE9D01771EE82AD2005CD1D5 /* SlideFeedback */ = {
 			isa = PBXGroup;
 			children = (
-				CEA07D301EE8B12600142EC5 /* SlideViewController.swift */,
 				CE9D01781EE82AD2005CD1D5 /* AppDelegate.swift */,
-				CE9D017A1EE82AD2005CD1D5 /* LoginViewController.swift */,
-				CE9D018A1EE82B45005CD1D5 /* RegisterViewController.swift */,
-				CE9D017C1EE82AD2005CD1D5 /* Main.storyboard */,
-				CE8520BA1EF165560034DCC2 /* LecturerSlideViewController.swift */,
-				CE8520B81EF14C760034DCC2 /* WaitingViewController.swift */,
 				CE106B951EE98B6500799305 /* SlideTableViewCell.swift */,
-				CE106B931EE987D700799305 /* SlidelistViewController.swift */,
-				CE106B891EE96B5F00799305 /* SocketIOManager.swift */,
-				CE106B8D1EE97A4D00799305 /* HideKeyboardExtension.swift */,
-				CE106B8F1EE97B5700799305 /* AlertExtension.swift */,
-				CE106B8B1EE9792C00799305 /* FirebaseManager.swift */,
-				CE9D018E1EE8A5CC005CD1D5 /* webViewExtension.swift */,
+				CE9D017C1EE82AD2005CD1D5 /* Main.storyboard */,
+				CE97D5101EF2AF360039BCF8 /* ViewControllers */,
+				CE97D5111EF2AF840039BCF8 /* Models */,
+				CE97D5121EF2AF890039BCF8 /* Extensions */,
 				CE9D017F1EE82AD2005CD1D5 /* Assets.xcassets */,
 				CE9D01811EE82AD2005CD1D5 /* LaunchScreen.storyboard */,
 				CE106B911EE97C9500799305 /* GoogleService-Info.plist */,
@@ -260,6 +287,7 @@
 				CE106B8A1EE96B5F00799305 /* SocketIOManager.swift in Sources */,
 				CE8520B91EF14C760034DCC2 /* WaitingViewController.swift in Sources */,
 				CE106B8E1EE97A4D00799305 /* HideKeyboardExtension.swift in Sources */,
+				CE97D50F1EF29D8D0039BCF8 /* Slide.swift in Sources */,
 				CE106B901EE97B5700799305 /* AlertExtension.swift in Sources */,
 				CE9D01791EE82AD2005CD1D5 /* AppDelegate.swift in Sources */,
 			);

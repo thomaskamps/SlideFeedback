@@ -12,9 +12,10 @@ import SocketIO
 class SocketIOManager {
     
     static let sharedInstance = SocketIOManager()
-    private let socket = SocketIOClient(socketURL: URL(string: "http://app.thomaskamps.nl:8080")!, config: [.log(true), .forcePolling(true)])
+    private let socket = SocketIOClient(socketURL: URL(string: "http://app.thomaskamps.nl:8080")!, config: [.log(false), .forcePolling(true)])
     
-    var rooms: [String:[String:Any]]?
+    var rooms: [String:[String:Any]] = [:]
+    var currentRoom: Slide?
     
     private init() {}
     
@@ -38,29 +39,29 @@ class SocketIOManager {
     }
     
     func getRooms() {
-        
-        print("getrooms")
-        
+
         socket.emit("sendrooms")
         
         socket.on("rooms") {data, ack in
             
             if let temp = data as? [[String: Any]] {
-                self.rooms = temp[0] as? [String : [String : Any]]
-                print(self.rooms)
+                
+                self.rooms = (temp[0] as? [String : [String : Any]])!
                 NotificationCenter.default.post(name: Notification.Name("newRooms"), object: nil)
             }
         }
     }
     
     func joinRoom(room: String) {
-        print("joinroom")
+        self.currentRoom = Slide(data: rooms[room]!)
         socket.emit("join", room)
         
         socket.on("changePage") {data, ack in
+            
             if let temp = data as? [Int] {
-                print(data)
-                self.rooms?[room]?["currentPage"] = temp[0]
+                
+                self.rooms[room]?["currentPage"] = temp[0]
+                self.currentRoom?.currentPage = temp[0]
                 NotificationCenter.default.post(name: Notification.Name("changePage"), object: nil)
             }
         }
@@ -70,26 +71,38 @@ class SocketIOManager {
         }
     }
     
-    func leaveRoom(room: String) {
-        print("leaveroom")
-        socket.emit("leave", room)
+    func leaveRoom() {
+        
+        socket.emit("leave", (currentRoom?.dirName)!)
+        self.currentRoom = nil
     }
     
-    func sendFeedback(feedback: String, room: String) {
-        socket.emit("feedback", ["feedback": feedback, "room": room])
+    func sendFeedback(feedback: String) {
+        
+        socket.emit("feedback", ["feedback": feedback, "room": self.currentRoom?.dirName])
     }
     
-    func changePage(currentPage: Int) {
-        socket.emit("changePage", currentPage)
+    func pageUp() {
+        
+        self.currentRoom?.currentPage += 1
+        socket.emit("changePage", (currentRoom?.currentPage)!)
     }
     
-    func claimLecture(room: String) {
-        socket.emit("claimLecture", room)
+    func pageDown() {
+        
+        self.currentRoom?.currentPage -= 1
+        socket.emit("changePage", (currentRoom?.currentPage)!)
+    }
+    
+    func claimLecture() {
+        socket.emit("claimLecture", (currentRoom?.dirName)!)
         
         socket.on("feedback") {data, ack in
+            
             if data[0] as! String == "negative" {
                 NotificationCenter.default.post(name: Notification.Name("receiveNegativeFeedback"), object: nil)
             }
+            
             if data[0] as! String == "positive" {
                 NotificationCenter.default.post(name: Notification.Name("receivePositiveFeedback"), object: nil)
             }
@@ -97,12 +110,11 @@ class SocketIOManager {
     }
     
     func endLecture() {
+        
         socket.emit("endLecture")
         
         socket.on("endLecture") {data, ack in
             NotificationCenter.default.post(name: Notification.Name("endLecture"), object: nil)
         }
     }
-        
-    
 }
