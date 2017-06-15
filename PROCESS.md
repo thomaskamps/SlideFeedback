@@ -15,3 +15,9 @@ Synchronisatie voor slides tussen lecturer en student, op basis van SocketIO. Oo
 
 *Dinsdag(dag6):*
 Feedback vanuit student-interface mogelijk gemaakt.
+
+*Woensdag(dag7):*
+Lecturers interface gemaakt, rollen voor users mogelijk gemaakt. Automatisch aanhaken als lecture mogelijk. Slides sturen ook. Feedback, slides stoppen, en afwerking ook afgemaakt. Functionaliteit voor MVP nu ongeveer rond en redelijk stabiel.
+
+*Donderdag(dag8):*
+Room-identifiers veranderd naar dirNames (ipv Naam), daar deze uniek zijn. Struct gemaakt voor alle data van een Slideset, geïntegreerd in code samen met andere verbeteringen. Code opgeschoond en klein beetje styling aangescherpt. Firebase volledig afgezonderd in model.
