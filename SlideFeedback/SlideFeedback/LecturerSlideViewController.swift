@@ -15,7 +15,7 @@ class LecturerSlideViewController: UIViewController, UIWebViewDelegate {
     
     @IBAction func nextButton(_ sender: Any) {
         
-        if (sio.currentRoom?.currentPage)! < (sio.currentRoom?.numPages)! {
+        if (sio.currentRoom?.currentPage)! < ((sio.currentRoom?.numPages)! - 1) {
             
             sio.pageUp()
             slideViewLoad(urlString: (sio.currentRoom?.buildUrlString())!)

@@ -25,6 +25,8 @@
 		CE9D018B1EE82B45005CD1D5 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D018A1EE82B45005CD1D5 /* RegisterViewController.swift */; };
 		CE9D018F1EE8A5CC005CD1D5 /* webViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D018E1EE8A5CC005CD1D5 /* webViewExtension.swift */; };
 		CEA07D311EE8B12600142EC5 /* SlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA07D301EE8B12600142EC5 /* SlideViewController.swift */; };
+		CEAE35E21EF94E370072DF18 /* StudentSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE35E11EF94E370072DF18 /* StudentSettingsViewController.swift */; };
+		CEAE35E41EF950100072DF18 /* LecturerSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE35E31EF950100072DF18 /* LecturerSettingsViewController.swift */; };
 		F30106CE0947A9F64655DC9B /* Pods_SlideFeedback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF09D8CFDB1A4708FE8EB179 /* Pods_SlideFeedback.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +54,8 @@
 		CE9D018A1EE82B45005CD1D5 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		CE9D018E1EE8A5CC005CD1D5 /* webViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = webViewExtension.swift; sourceTree = "<group>"; };
 		CEA07D301EE8B12600142EC5 /* SlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideViewController.swift; sourceTree = "<group>"; };
+		CEAE35E11EF94E370072DF18 /* StudentSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentSettingsViewController.swift; sourceTree = "<group>"; };
+		CEAE35E31EF950100072DF18 /* LecturerSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturerSettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,8 @@
 		CE97D5101EF2AF360039BCF8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CEAE35E31EF950100072DF18 /* LecturerSettingsViewController.swift */,
+				CEAE35E11EF94E370072DF18 /* StudentSettingsViewController.swift */,
 				CEA07D301EE8B12600142EC5 /* SlideViewController.swift */,
 				CE9D017A1EE82AD2005CD1D5 /* LoginViewController.swift */,
 				CE9D018A1EE82B45005CD1D5 /* RegisterViewController.swift */,
@@ -281,6 +287,8 @@
 				CE106B961EE98B6500799305 /* SlideTableViewCell.swift in Sources */,
 				CE8520BB1EF165560034DCC2 /* LecturerSlideViewController.swift in Sources */,
 				CE106B941EE987D700799305 /* SlidelistViewController.swift in Sources */,
+				CEAE35E41EF950100072DF18 /* LecturerSettingsViewController.swift in Sources */,
+				CEAE35E21EF94E370072DF18 /* StudentSettingsViewController.swift in Sources */,
 				CE106B8C1EE9792C00799305 /* FirebaseManager.swift in Sources */,
 				CE9D018B1EE82B45005CD1D5 /* RegisterViewController.swift in Sources */,
 				CE9D017B1EE82AD2005CD1D5 /* LoginViewController.swift in Sources */,
