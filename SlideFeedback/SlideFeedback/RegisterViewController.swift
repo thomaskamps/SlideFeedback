@@ -36,7 +36,7 @@ class RegisterViewController: UIViewController {
         
         if self.nameField.text! != "" && self.emailField.text! != "" && self.passwordField.text! != "" && self.confirmPasswordField.text! != "" {
             
-            if self.passwordField.text! != self.confirmPasswordField.text! {
+            if self.passwordField.text! == self.confirmPasswordField.text! {
                 
                 do {
                     

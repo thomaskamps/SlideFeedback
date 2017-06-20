@@ -16,6 +16,7 @@ class StudentSettingsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(self.userLoggedOut(notification:)), name: Notification.Name("userLoggedOut"), object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,6 +27,7 @@ class StudentSettingsViewController: UIViewController {
     @IBAction func logoutAction(_ sender: Any) {
         
         do {
+            
             try db.logOut()
             
         } catch let error as NSError {
@@ -34,14 +36,7 @@ class StudentSettingsViewController: UIViewController {
         }
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func userLoggedOut(notification: Notification) {
+        self.performSegue(withIdentifier: "logOutSegue", sender: nil)
     }
-    */
-
 }

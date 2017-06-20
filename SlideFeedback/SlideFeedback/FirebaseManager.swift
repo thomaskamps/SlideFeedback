@@ -31,6 +31,9 @@ class FirebaseManager {
                     
                     print(error.localizedDescription)
                 }
+            } else {
+                
+                NotificationCenter.default.post(name: Notification.Name("userLoggedOut"), object: nil)
             }
         }
         
@@ -79,6 +82,10 @@ class FirebaseManager {
         
         Auth.auth().createUser(withEmail: email, password: password) {(user, error) in
             registerError = error
+            
+            if error == nil {
+                self.ref.child("users").child((user?.uid)!).setValue(["name": name, "role": 10])
+            }
         }
         
         if registerError == nil {
@@ -86,12 +93,12 @@ class FirebaseManager {
             do {
                 
                 try self.login(email: email, password: password)
-                self.ref.child("users").child(self.userID!).setValue(["name": name, "role": 10])
                 
             } catch let loginError as NSError {
                 
                 throw loginError
             }
+            
         } else {
             
             throw registerError as! NSError

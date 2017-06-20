@@ -52,6 +52,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="more" id="r1U-MG-LSN"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="logOutSegue" id="qmU-Nv-l5g"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z2g-4z-1DF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -436,6 +439,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="more" id="oOG-hi-Apx"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="logOutSegue" id="9EX-UB-Pe5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H4A-vA-6Cq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -504,13 +510,13 @@
                                         <rect key="frame" x="55" y="85" width="458" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MoD-pH-Ip6">
                                         <rect key="frame" x="55" y="135" width="458" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6on-oJ-9QB">
                                         <rect key="frame" x="55" y="185" width="458" height="30"/>
@@ -687,7 +693,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="GIC-Hq-1vu"/>
-        <segue reference="0Kf-Ip-uQS"/>
+        <segue reference="1Oa-Ps-vXs"/>
+        <segue reference="dXE-sP-bSm"/>
         <segue reference="5zI-Xw-0UB"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -16,6 +16,7 @@ class LecturerSettingsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(self.userLoggedOut(notification:)), name: Notification.Name("userLoggedOut"), object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,5 +35,8 @@ class LecturerSettingsViewController: UIViewController {
             self.alert(title: "Unfortunately something went wrong", message: String(describing: error))
         }
     }
-
+    
+    func userLoggedOut(notification: Notification) {
+        self.performSegue(withIdentifier: "logOutSegue", sender: nil)
+    }
 }
