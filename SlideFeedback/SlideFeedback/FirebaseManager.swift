@@ -62,11 +62,41 @@ class FirebaseManager {
     }
     
     func logOut() throws {
+        
         do {
+            
             try Auth.auth().signOut()
+            
         } catch let signOutError as NSError {
+            
             throw signOutError
         }
+    }
+    
+    func createUser(name: String, password: String, email: String) throws {
+        
+        var registerError: Any?
+        
+        Auth.auth().createUser(withEmail: email, password: password) {(user, error) in
+            registerError = error
+        }
+        
+        if registerError == nil {
+            
+            do {
+                
+                try self.login(email: email, password: password)
+                self.ref.child("users").child(self.userID!).setValue(["name": name, "role": 10])
+                
+            } catch let loginError as NSError {
+                
+                throw loginError
+            }
+        } else {
+            
+            throw registerError as! NSError
+        }
+        
     }
     
 }
