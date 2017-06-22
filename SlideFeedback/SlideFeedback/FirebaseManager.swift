@@ -106,4 +106,35 @@ class FirebaseManager {
         
     }
     
+    func startSlides(dirName: String, uniqueID: String, timeStamp: String) {
+        
+        let data = ["dirName": dirName, "timeStamp": timeStamp]
+        
+        if self.role == 20 {
+            
+            self.ref.child("presentations").child(uniqueID).setValue(data)
+        }
+    }
+    
+    func saveFeedbackLecturer(uniqueID: String, currentPage: Int, feedback: String) {
+        
+        let feedbackRef = self.ref.child("users").child(self.userID!).child("presentations").child(uniqueID).child(String(currentPage)).child(feedback)
+        
+        feedbackRef.runTransactionBlock { (currentData: MutableData) -> TransactionResult in
+            
+            var value = currentData.value as? Int
+            
+            if value == nil {
+                value = 0
+            }
+            currentData.value = value! + 1
+            return TransactionResult.success(withValue: currentData)
+        }
+    }
+    
+    func saveFeedbackStudent(uniqueID: String, currentPage: Int, feedback: String) {
+        
+        self.ref.child("users").child(self.userID!).child("saved_slides").child(uniqueID).setValue([String(currentPage): feedback])
+    }
+    
 }

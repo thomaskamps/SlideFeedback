@@ -33,6 +33,7 @@ class WaitingViewController: UIViewController {
             if sio.rooms[x]?["lecturer"] as? String == db.userID {
                 
                 sio.currentRoom = Slide(data: sio.rooms[x]!)
+                db.startSlides(dirName: (sio.currentRoom?.dirName)!, uniqueID: (sio.currentRoom?.uniqueID)!, timeStamp: (sio.currentRoom?.timeStamp)!)
                 self.performSegue(withIdentifier: "LecturerStartSlideSegue", sender: nil)
             }
         }

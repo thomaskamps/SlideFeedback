@@ -37,6 +37,7 @@ class LecturerSlideViewController: UIViewController, UIWebViewDelegate {
     }
     
     let sio = SocketIOManager.sharedInstance
+    let db = FirebaseManager.sharedInstance
 
     override func viewDidLoad() {
         
@@ -50,7 +51,7 @@ class LecturerSlideViewController: UIViewController, UIWebViewDelegate {
             sio.claimLecture()
             
             slideViewLoad(urlString: (sio.currentRoom?.buildUrlString())!)
-            NotificationCenter.default.addObserver(self, selector: #selector(self.endLecture(notification:)), name: Notification.Name("newRooms"), object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.endLecture(notification:)), name: Notification.Name("endLecture"), object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(self.receiveNegativeFeedback(notification:)), name: Notification.Name("receiveNegativeFeedback"), object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(self.receivePositiveFeedback(notification:)), name: Notification.Name("receivePositiveFeedback"), object: nil)
         }
@@ -86,11 +87,13 @@ class LecturerSlideViewController: UIViewController, UIWebViewDelegate {
     
     func receiveNegativeFeedback(notification: Notification) {
         
+        db.saveFeedbackLecturer(uniqueID: (sio.currentRoom?.uniqueID)!, currentPage: (sio.currentRoom?.currentPage)!, feedback: "negative")
         self.alert(title: "You received feedback", message: "Unfortunately it is negative")
     }
     
     func receivePositiveFeedback(notification: Notification) {
         
+        db.saveFeedbackLecturer(uniqueID: (sio.currentRoom?.uniqueID)!, currentPage: (sio.currentRoom?.currentPage)!, feedback: "positive")
         self.alert(title: "You received feedback", message: "Yeah it is positive")
     }
 

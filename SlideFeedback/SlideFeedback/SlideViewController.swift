@@ -16,6 +16,7 @@ class SlideViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var positiveFeedbackButton: UIButton!
     
     let sio = SocketIOManager.sharedInstance
+    let db = FirebaseManager.sharedInstance
     
     override func viewDidLoad() {
         
@@ -75,6 +76,7 @@ class SlideViewController: UIViewController, UIWebViewDelegate {
         
         negativeFeedbackButton.isEnabled = false
         positiveFeedbackButton.isEnabled = false
+        db.saveFeedbackStudent(uniqueID: (sio.currentRoom?.uniqueID)!, currentPage: (sio.currentRoom?.currentPage)!, feedback: "negative")
         
         sio.sendFeedback(feedback: "negative")
     }
@@ -83,6 +85,7 @@ class SlideViewController: UIViewController, UIWebViewDelegate {
         
         negativeFeedbackButton.isEnabled = false
         positiveFeedbackButton.isEnabled = false
+        db.saveFeedbackStudent(uniqueID: (sio.currentRoom?.uniqueID)!, currentPage: (sio.currentRoom?.currentPage)!, feedback: "positive")
         
         sio.sendFeedback(feedback: "positive")
     }
