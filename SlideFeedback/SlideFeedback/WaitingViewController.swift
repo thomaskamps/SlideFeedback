@@ -26,6 +26,10 @@ class WaitingViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     func newRooms(notification: Notification) {
         
         for x in Array(sio.rooms.keys) {
@@ -37,5 +41,9 @@ class WaitingViewController: UIViewController {
                 self.performSegue(withIdentifier: "LecturerStartSlideSegue", sender: nil)
             }
         }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }

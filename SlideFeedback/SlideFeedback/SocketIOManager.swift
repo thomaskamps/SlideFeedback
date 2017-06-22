@@ -115,6 +115,9 @@ class SocketIOManager {
         
         socket.on("endLecture") {data, ack in
             NotificationCenter.default.post(name: Notification.Name("endLecture"), object: nil)
+            self.socket.off("endLecture")
         }
+        
+        socket.off("feedback")
     }
 }

@@ -31,6 +31,10 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     func login() {
         
         if userName.text! != "" && password.text! != "" {
@@ -68,6 +72,10 @@ class LoginViewController: UIViewController {
             
             self.performSegue(withIdentifier: "loginSegue", sender: nil)
         }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
 }

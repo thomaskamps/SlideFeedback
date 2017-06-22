@@ -123,18 +123,19 @@ class FirebaseManager {
         feedbackRef.runTransactionBlock { (currentData: MutableData) -> TransactionResult in
             
             var value = currentData.value as? Int
-            
+            print(value)
             if value == nil {
                 value = 0
             }
             currentData.value = value! + 1
+            print(currentData.value)
             return TransactionResult.success(withValue: currentData)
         }
     }
     
     func saveFeedbackStudent(uniqueID: String, currentPage: Int, feedback: String) {
         
-        self.ref.child("users").child(self.userID!).child("saved_slides").child(uniqueID).setValue([String(currentPage): feedback])
+        self.ref.child("users").child(self.userID!).child("saved_slides").child(uniqueID).child(String(currentPage)).setValue(feedback)
     }
     
 }

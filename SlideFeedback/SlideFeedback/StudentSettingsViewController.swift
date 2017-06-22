@@ -24,6 +24,10 @@ class StudentSettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     @IBAction func logoutAction(_ sender: Any) {
         
         do {
@@ -38,5 +42,9 @@ class StudentSettingsViewController: UIViewController {
 
     func userLoggedOut(notification: Notification) {
         self.performSegue(withIdentifier: "logOutSegue", sender: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }

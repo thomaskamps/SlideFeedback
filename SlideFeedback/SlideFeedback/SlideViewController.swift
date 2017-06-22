@@ -39,6 +39,10 @@ class SlideViewController: UIViewController, UIWebViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         
         if sio.currentRoom != nil {
@@ -98,5 +102,9 @@ class SlideViewController: UIViewController, UIWebViewDelegate {
         })
         alert.addAction(oke)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }

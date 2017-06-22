@@ -63,6 +63,10 @@ class LecturerSlideViewController: UIViewController, UIWebViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     func slideViewLoad(urlString: String) {
         
         let url: NSURL! = NSURL(string: urlString)
@@ -95,6 +99,10 @@ class LecturerSlideViewController: UIViewController, UIWebViewDelegate {
         
         db.saveFeedbackLecturer(uniqueID: (sio.currentRoom?.uniqueID)!, currentPage: (sio.currentRoom?.currentPage)!, feedback: "positive")
         self.alert(title: "You received feedback", message: "Yeah it is positive")
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
 }

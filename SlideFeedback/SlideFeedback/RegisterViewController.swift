@@ -32,6 +32,10 @@ class RegisterViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     @IBAction func registerAction(_ sender: Any) {
         
         if self.nameField.text! != "" && self.emailField.text! != "" && self.passwordField.text! != "" && self.confirmPasswordField.text! != "" {
@@ -64,14 +68,8 @@ class RegisterViewController: UIViewController {
         self.performSegue(withIdentifier: "registerLogin", sender: nil)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
-    */
 
 }
