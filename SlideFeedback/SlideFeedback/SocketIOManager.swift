@@ -75,6 +75,8 @@ class SocketIOManager {
         
         socket.emit("leave", (currentRoom?.dirName)!)
         self.currentRoom = nil
+        socket.off("changePage")
+        socket.off("endLecture")
     }
     
     func sendFeedback(feedback: String) {
@@ -112,12 +114,6 @@ class SocketIOManager {
     func endLecture() {
         
         socket.emit("endLecture")
-        
-        socket.on("endLecture") {data, ack in
-            NotificationCenter.default.post(name: Notification.Name("endLecture"), object: nil)
-            self.socket.off("endLecture")
-        }
-        
         socket.off("feedback")
     }
 }

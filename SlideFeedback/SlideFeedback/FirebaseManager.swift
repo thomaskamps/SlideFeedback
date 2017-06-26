@@ -12,6 +12,7 @@ import Firebase
 class FirebaseManager {
     
     static let sharedInstance = FirebaseManager()
+    var history: [String: [String: Any]] = [:]
     
     private init() {
         
@@ -118,24 +119,27 @@ class FirebaseManager {
     
     func saveFeedbackLecturer(uniqueID: String, currentPage: Int, feedback: String) {
         
-        let feedbackRef = self.ref.child("users").child(self.userID!).child("presentations").child(uniqueID).child(String(currentPage)).child(feedback)
-        
-        feedbackRef.runTransactionBlock { (currentData: MutableData) -> TransactionResult in
-            
-            var value = currentData.value as? Int
-            print(value)
-            if value == nil {
-                value = 0
-            }
-            currentData.value = value! + 1
-            print(currentData.value)
-            return TransactionResult.success(withValue: currentData)
-        }
+        let feedbackRef = self.ref.child("users").child(self.userID!).child("presentations").child(uniqueID)
+        let key = feedbackRef.childByAutoId().key
+        feedbackRef.child(key).setValue(["page": currentPage, "feedback": feedback])
     }
     
     func saveFeedbackStudent(uniqueID: String, currentPage: Int, feedback: String) {
         
         self.ref.child("users").child(self.userID!).child("saved_slides").child(uniqueID).child(String(currentPage)).setValue(feedback)
+    }
+    
+    func getLecturerHistory() {
+        
+        
+        ref.child("users").child(self.userID!).child("presentations").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            //let histDict = snapshot.value as? [String : Any] ?? [:]
+            
+            print(snapshot.value)
+            
+            
+        })
     }
     
 }

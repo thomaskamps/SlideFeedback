@@ -34,6 +34,7 @@ class LecturerSlideViewController: UIViewController, UIWebViewDelegate {
     @IBAction func endSlideButton(_ sender: Any) {
         
         sio.endLecture()
+        self.dismiss(animated: true, completion: nil)
     }
     
     let sio = SocketIOManager.sharedInstance
@@ -51,7 +52,6 @@ class LecturerSlideViewController: UIViewController, UIWebViewDelegate {
             sio.claimLecture()
             
             slideViewLoad(urlString: (sio.currentRoom?.buildUrlString())!)
-            NotificationCenter.default.addObserver(self, selector: #selector(self.endLecture(notification:)), name: Notification.Name("endLecture"), object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(self.receiveNegativeFeedback(notification:)), name: Notification.Name("receiveNegativeFeedback"), object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(self.receivePositiveFeedback(notification:)), name: Notification.Name("receivePositiveFeedback"), object: nil)
         }
@@ -82,11 +82,6 @@ class LecturerSlideViewController: UIViewController, UIWebViewDelegate {
     func webViewDidStartLoad(_ webView: UIWebView) {
         
         activityIndicator.startAnimating()
-    }
-    
-    func endLecture(notification: Notification) {
-        
-        self.performSegue(withIdentifier: "endSlideSegue", sender: nil)
     }
     
     func receiveNegativeFeedback(notification: Notification) {

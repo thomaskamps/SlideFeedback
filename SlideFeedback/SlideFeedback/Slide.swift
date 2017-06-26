@@ -19,7 +19,7 @@ struct Slide {
     let baseUrl = "http://app.thomaskamps.nl:8080/static/uploads/"
     
     init(data: [String: Any]) {
-        
+
         self.dirName = data["dirName"] as! String
         self.name = data["name"] as! String
         self.currentPage = data["currentPage"] as! Int
