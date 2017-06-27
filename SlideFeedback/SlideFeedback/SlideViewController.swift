@@ -27,9 +27,11 @@ class SlideViewController: UIViewController, UIWebViewDelegate {
         
         if sio.currentRoom != nil {
             
+            db.startSlides(dirName: (sio.currentRoom?.dirName)!, uniqueID: (sio.currentRoom?.uniqueID)!, timeStamp: (sio.currentRoom?.timeStamp)!, name: (sio.currentRoom?.name)!, numPages: (sio.currentRoom?.numPages)!)
             slideViewLoad(urlString: (sio.currentRoom?.buildUrlString())!)
             NotificationCenter.default.addObserver(self, selector: #selector(self.changePage(notification:)), name: Notification.Name("changePage"), object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(self.endSlides(notification:)), name: Notification.Name("endSlides"), object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.alertConnection(notification:)), name: Notification.Name("alertConnection"), object: nil)
         }
     }
 
@@ -80,7 +82,7 @@ class SlideViewController: UIViewController, UIWebViewDelegate {
         
         negativeFeedbackButton.isEnabled = false
         positiveFeedbackButton.isEnabled = false
-        db.saveFeedbackStudent(uniqueID: (sio.currentRoom?.uniqueID)!, currentPage: (sio.currentRoom?.currentPage)!, feedback: "negative")
+        db.saveFeedback(uniqueID: (sio.currentRoom?.uniqueID)!, currentPage: (sio.currentRoom?.currentPage)!, feedback: "negative")
         
         sio.sendFeedback(feedback: "negative")
     }
@@ -89,16 +91,20 @@ class SlideViewController: UIViewController, UIWebViewDelegate {
         
         negativeFeedbackButton.isEnabled = false
         positiveFeedbackButton.isEnabled = false
-        db.saveFeedbackStudent(uniqueID: (sio.currentRoom?.uniqueID)!, currentPage: (sio.currentRoom?.currentPage)!, feedback: "positive")
+        db.saveFeedback(uniqueID: (sio.currentRoom?.uniqueID)!, currentPage: (sio.currentRoom?.currentPage)!, feedback: "positive")
         
         sio.sendFeedback(feedback: "positive")
+    }
+    
+    @IBAction func backButtonAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     func endSlides(notification: Notification) {
         
         let alert = UIAlertController(title: "Lecture has been ended", message: "You will now be brought back to the overview", preferredStyle: .alert)
         let oke = UIAlertAction(title: "Oke", style: .default, handler: {(action) -> Void in
-            self.performSegue(withIdentifier: "endSlideStudent", sender: nil)
+            self.dismiss(animated: true, completion: nil)
         })
         alert.addAction(oke)
         self.present(alert, animated: true, completion: nil)

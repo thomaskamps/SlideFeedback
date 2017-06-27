@@ -19,4 +19,8 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    func alertConnection(notification: Notification) {
+        self.alert(title: "You seem to have some problems with your connection", message: "Please check if your internet connection is working properly")
+    }
+    
 }

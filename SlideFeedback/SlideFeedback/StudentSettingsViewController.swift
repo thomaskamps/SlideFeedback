@@ -17,6 +17,7 @@ class StudentSettingsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(self, selector: #selector(self.userLoggedOut(notification:)), name: Notification.Name("userLoggedOut"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.alertConnection(notification:)), name: Notification.Name("alertConnection"), object: nil)
     }
 
     override func didReceiveMemoryWarning() {

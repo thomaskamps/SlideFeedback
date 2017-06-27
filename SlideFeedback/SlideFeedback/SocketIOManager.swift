@@ -26,6 +26,11 @@ class SocketIOManager {
             self.getRooms()
         }
         
+        socket.on(clientEvent: .error) {data, ack in
+            NotificationCenter.default.post(name: Notification.Name("alertConnection"), object: nil)
+            self.socket.reconnect()
+        }
+        
         socket.connect()
     }
     

@@ -20,7 +20,7 @@ class SlidelistViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        NotificationCenter.default.addObserver(self, selector: #selector(self.newRooms(notification:)), name: Notification.Name("newRooms"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.alertConnection(notification:)), name: Notification.Name("alertConnection"), object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,7 +29,8 @@ class SlidelistViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        tableView.reloadData()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.newRooms(notification:)), name: Notification.Name("newRooms"), object: nil)
+        sio.getRooms()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

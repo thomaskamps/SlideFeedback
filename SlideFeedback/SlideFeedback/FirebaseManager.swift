@@ -12,7 +12,7 @@ import Firebase
 class FirebaseManager {
     
     static let sharedInstance = FirebaseManager()
-    var history: [String: [String: Any]] = [:]
+    var history: [String: [String: Any]]?
     
     private init() {
         
@@ -107,39 +107,48 @@ class FirebaseManager {
         
     }
     
-    func startSlides(dirName: String, uniqueID: String, timeStamp: String) {
+    func startSlides(dirName: String, uniqueID: String, timeStamp: String, name: String, numPages: Int) {
         
-        let data = ["dirName": dirName, "timeStamp": timeStamp]
+        let data = ["dirName": dirName, "timeStamp": timeStamp, "name": name, "numPages": numPages] as [String : Any]
         
-        if self.role == 20 {
-            
-            self.ref.child("presentations").child(uniqueID).setValue(data)
-        }
+        self.ref.child("users").child(self.userID!).child(self.getRefName()).child(uniqueID).setValue(data)
     }
     
-    func saveFeedbackLecturer(uniqueID: String, currentPage: Int, feedback: String) {
+    func saveFeedback(uniqueID: String, currentPage: Int, feedback: String) {
         
-        let feedbackRef = self.ref.child("users").child(self.userID!).child("presentations").child(uniqueID)
+        let feedbackRef = self.ref.child("users").child(self.userID!).child(self.getRefName()).child(uniqueID).child("feedback")
         let key = feedbackRef.childByAutoId().key
         feedbackRef.child(key).setValue(["page": currentPage, "feedback": feedback])
     }
     
-    func saveFeedbackStudent(uniqueID: String, currentPage: Int, feedback: String) {
-        
-        self.ref.child("users").child(self.userID!).child("saved_slides").child(uniqueID).child(String(currentPage)).setValue(feedback)
-    }
-    
     func getLecturerHistory() {
         
-        
-        ref.child("users").child(self.userID!).child("presentations").observeSingleEvent(of: .value, with: { (snapshot) in
+        self.ref.child("users").child(self.userID!).child("presentations").observeSingleEvent(of: .value, with: { (snapshot) in
             
-            //let histDict = snapshot.value as? [String : Any] ?? [:]
+            if let histDict = snapshot.value as? [String : [String : Any]] {
             
-            print(snapshot.value)
+                self.history = histDict
             
-            
+                NotificationCenter.default.post(name: Notification.Name("newLectureHistory"), object: nil)
+            }
         })
+    }
+    
+    func deletePresentation(uniqueID: String) {
+        
+        self.ref.child("users").child(self.userID!).child(self.getRefName()).child(uniqueID).removeValue()
+    }
+    
+    func getRefName() -> String {
+        
+        if self.role == 20 {
+            
+            return "presentations"
+            
+        } else {
+            
+            return "saved_slides"
+        }
     }
     
 }

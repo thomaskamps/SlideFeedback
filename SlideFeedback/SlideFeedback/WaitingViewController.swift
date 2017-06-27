@@ -17,6 +17,7 @@ class WaitingViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(self.alertConnection(notification:)), name: Notification.Name("alertConnection"), object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,7 +42,7 @@ class WaitingViewController: UIViewController {
             if sio.rooms[x]?["lecturer"] as? String == db.userID {
                 
                 sio.currentRoom = Slide(data: sio.rooms[x]!)
-                db.startSlides(dirName: (sio.currentRoom?.dirName)!, uniqueID: (sio.currentRoom?.uniqueID)!, timeStamp: (sio.currentRoom?.timeStamp)!)
+                db.startSlides(dirName: (sio.currentRoom?.dirName)!, uniqueID: (sio.currentRoom?.uniqueID)!, timeStamp: (sio.currentRoom?.timeStamp)!, name: (sio.currentRoom?.name)!, numPages: (sio.currentRoom?.numPages)!)
                 self.performSegue(withIdentifier: "LecturerStartSlideSegue", sender: nil)
             }
         }

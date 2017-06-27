@@ -1,19 +1,19 @@
 //
-//  LectureHistoryViewController.swift
+//  StudenHistoryViewController.swift
 //  SlideFeedback
 //
-//  Created by Thomas Kamps on 22-06-17.
+//  Created by Thomas Kamps on 27-06-17.
 //  Copyright © 2017 Thomas Kamps. All rights reserved.
 //
 
 import UIKit
 
-class LectureHistoryViewController: UIViewController {
-
+class StudenHistoryViewController: UIViewController {
+    
     @IBOutlet weak var tableView: UITableView!
     
     let db = FirebaseManager.sharedInstance
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,13 +42,13 @@ class LectureHistoryViewController: UIViewController {
     }
 }
 
-extension LectureHistoryViewController: UITableViewDelegate {
+extension StudenHistoryViewController: UITableViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "showHistorySegue" {
+        if segue.identifier == "showStudentHistorySegue" {
             
-            let vc = segue.destination as! LectureHistorySlideViewController
+            let vc = segue.destination as! StudentHistorySlideViewController
             let unique_id =  Array(db.history!.keys)[(tableView.indexPathForSelectedRow?.row)!]
             var data = self.db.history?[unique_id]
             data?["timestamp"] = data?["timeStamp"]
@@ -70,7 +70,7 @@ extension LectureHistoryViewController: UITableViewDelegate {
     }
 }
 
-extension LectureHistoryViewController: UITableViewDataSource {
+extension StudenHistoryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -85,7 +85,7 @@ extension LectureHistoryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "lecturerHistoryCell", for: indexPath) as! LecturerHistoryTableViewCell
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "studentHistoryCell", for: indexPath) as! LecturerHistoryTableViewCell
         let test = db.history?[Array(db.history!.keys)[indexPath.row]]
         cell.label.text = (test?["timeStamp"] as? String)! + " - " + (test?["name"] as? String)!
         

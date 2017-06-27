@@ -356,7 +356,6 @@
                     <connections>
                         <outlet property="activityIndicator" destination="Jta-tl-Zth" id="7pF-TB-EVz"/>
                         <outlet property="slideView" destination="ly0-8s-SGm" id="2y6-KX-dXj"/>
-                        <segue destination="c75-qp-dxT" kind="showDetail" identifier="endSlideSegue" id="evo-zU-OTf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hcg-jp-5Nc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -535,10 +534,10 @@
             </objects>
             <point key="canvasLocation" x="32" y="2659"/>
         </scene>
-        <!--View Controller-->
+        <!--Studen History View Controller-->
         <scene sceneID="LuL-fe-ApF">
             <objects>
-                <viewController id="wED-8H-lOb" sceneMemberID="viewController">
+                <viewController id="wED-8H-lOb" customClass="StudenHistoryViewController" customModule="SlideFeedback" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aur-fW-tfx"/>
                         <viewControllerLayoutGuide type="bottom" id="tyq-rj-qwq"/>
@@ -546,13 +545,167 @@
                     <view key="view" contentMode="scaleToFill" id="Kx8-h1-DND">
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r7r-Zy-DDt">
+                                <rect key="frame" x="0.0" y="0.0" width="568" height="85"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select the lecture you want to review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3n-HS-cIQ">
+                                        <rect key="frame" x="8" y="43" width="298" height="22"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1843137255" green="0.69803921570000005" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="C3n-HS-cIQ" firstAttribute="leading" secondItem="r7r-Zy-DDt" secondAttribute="leading" constant="8" id="9NW-bO-ucJ"/>
+                                    <constraint firstItem="C3n-HS-cIQ" firstAttribute="top" secondItem="r7r-Zy-DDt" secondAttribute="top" constant="43" id="YHb-Is-01D"/>
+                                    <constraint firstAttribute="height" constant="85" id="dSe-lq-ei3"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3AI-oz-FV1">
+                                <rect key="frame" x="0.0" y="85" width="568" height="186"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="studentHistoryCell" id="IpX-Ze-jqx" customClass="StudentHistoryTableViewCell" customModule="SlideFeedback" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="568" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IpX-Ze-jqx" id="n1I-H5-DsB">
+                                            <rect key="frame" x="0.0" y="0.0" width="568" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pnu-LG-qDs">
+                                                    <rect key="frame" x="8" y="11" width="503" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="label" destination="Pnu-LG-qDs" id="wy7-T2-eP8"/>
+                                            <segue destination="mic-44-r36" kind="show" identifier="showStudentHistorySegue" trigger="accessoryAction" id="886-Uk-7SQ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="r7r-Zy-DDt" firstAttribute="top" secondItem="Kx8-h1-DND" secondAttribute="top" id="6Gj-aP-b2f"/>
+                            <constraint firstItem="r7r-Zy-DDt" firstAttribute="leading" secondItem="Kx8-h1-DND" secondAttribute="leading" id="Afn-MH-em9"/>
+                            <constraint firstAttribute="trailing" secondItem="r7r-Zy-DDt" secondAttribute="trailing" id="Et4-9E-fkX"/>
+                            <constraint firstItem="3AI-oz-FV1" firstAttribute="leading" secondItem="Kx8-h1-DND" secondAttribute="leading" id="N8G-HY-KNG"/>
+                            <constraint firstAttribute="trailing" secondItem="3AI-oz-FV1" secondAttribute="trailing" id="WRN-BZ-WVD"/>
+                            <constraint firstItem="tyq-rj-qwq" firstAttribute="top" secondItem="3AI-oz-FV1" secondAttribute="bottom" id="uQ4-9F-TiC"/>
+                            <constraint firstItem="3AI-oz-FV1" firstAttribute="top" secondItem="r7r-Zy-DDt" secondAttribute="bottom" id="wUI-bp-hB0"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="history" id="Dki-fY-FMv"/>
+                    <connections>
+                        <outlet property="tableView" destination="3AI-oz-FV1" id="wbv-0H-lOG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zxX-Gm-hhc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="997" y="2659"/>
+            <point key="canvasLocation" x="996.12676056338034" y="2658.75"/>
+        </scene>
+        <!--Student History Slide View Controller-->
+        <scene sceneID="SlG-oJ-ZQf">
+            <objects>
+                <viewController id="mic-44-r36" customClass="StudentHistorySlideViewController" customModule="SlideFeedback" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xVk-OL-KZ3"/>
+                        <viewControllerLayoutGuide type="bottom" id="f0S-Dp-uIg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vPk-yU-xwb">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qSd-hd-Rhd">
+                                <rect key="frame" x="0.0" y="0.0" width="568" height="85"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8T-Hl-Bdq">
+                                        <rect key="frame" x="8" y="27" width="64" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="&lt;- Back">
+                                            <color key="titleColor" red="0.30196078430000001" green="0.31372549020000001" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backButton:" destination="mic-44-r36" eventType="touchUpInside" id="r9I-yU-lVy"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NqS-af-Tcr">
+                                        <rect key="frame" x="88" y="31" width="79.5" height="22"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" red="0.30196078430000001" green="0.31372549020000001" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4i-E5-h1d">
+                                        <rect key="frame" x="498" y="31" width="62" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Next -&gt;">
+                                            <color key="titleColor" red="0.30196078430000001" green="0.31372549020000001" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextButton:" destination="mic-44-r36" eventType="touchUpInside" id="TpA-gX-paU"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ucB-aj-BLl">
+                                        <rect key="frame" x="396" y="31" width="94" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="&lt;- Previous">
+                                            <color key="titleColor" red="0.30196078430000001" green="0.31372549020000001" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="previousButton:" destination="mic-44-r36" eventType="touchUpInside" id="Ofx-Og-5Ch"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1843137255" green="0.69803921570000005" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="NqS-af-Tcr" firstAttribute="leading" secondItem="t8T-Hl-Bdq" secondAttribute="trailing" constant="16" id="Ivm-EO-05Z"/>
+                                    <constraint firstItem="ucB-aj-BLl" firstAttribute="top" secondItem="qSd-hd-Rhd" secondAttribute="top" constant="31" id="L1w-91-Rz9"/>
+                                    <constraint firstAttribute="trailing" secondItem="x4i-E5-h1d" secondAttribute="trailing" constant="8" id="VYM-Sr-krP"/>
+                                    <constraint firstItem="x4i-E5-h1d" firstAttribute="top" secondItem="qSd-hd-Rhd" secondAttribute="top" constant="31" id="WH5-U6-7k1"/>
+                                    <constraint firstItem="t8T-Hl-Bdq" firstAttribute="leading" secondItem="qSd-hd-Rhd" secondAttribute="leading" constant="8" id="YsG-iZ-Nb5"/>
+                                    <constraint firstItem="NqS-af-Tcr" firstAttribute="top" secondItem="qSd-hd-Rhd" secondAttribute="top" constant="31" id="bc7-hr-paL"/>
+                                    <constraint firstItem="x4i-E5-h1d" firstAttribute="leading" secondItem="ucB-aj-BLl" secondAttribute="trailing" constant="8" id="cFs-r6-Eac"/>
+                                    <constraint firstAttribute="height" constant="85" id="ezO-gH-sac"/>
+                                    <constraint firstItem="t8T-Hl-Bdq" firstAttribute="top" secondItem="qSd-hd-Rhd" secondAttribute="top" constant="27" id="za2-Nk-pAP"/>
+                                </constraints>
+                            </view>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2u3-OL-ZDj">
+                                <rect key="frame" x="0.0" y="85" width="568" height="186"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="5SY-ao-1uY">
+                                <rect key="frame" x="274" y="150" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="qSd-hd-Rhd" secondAttribute="trailing" id="0w6-ng-Msk"/>
+                            <constraint firstItem="f0S-Dp-uIg" firstAttribute="top" secondItem="2u3-OL-ZDj" secondAttribute="bottom" id="Mce-4k-nMU"/>
+                            <constraint firstItem="2u3-OL-ZDj" firstAttribute="leading" secondItem="vPk-yU-xwb" secondAttribute="leading" id="c4l-Jr-dWD"/>
+                            <constraint firstItem="qSd-hd-Rhd" firstAttribute="top" secondItem="vPk-yU-xwb" secondAttribute="top" id="p6y-sm-RzC"/>
+                            <constraint firstItem="2u3-OL-ZDj" firstAttribute="top" secondItem="qSd-hd-Rhd" secondAttribute="bottom" id="qcc-38-8pn"/>
+                            <constraint firstItem="5SY-ao-1uY" firstAttribute="centerX" secondItem="vPk-yU-xwb" secondAttribute="centerX" id="svl-7N-vtZ"/>
+                            <constraint firstItem="5SY-ao-1uY" firstAttribute="centerY" secondItem="vPk-yU-xwb" secondAttribute="centerY" id="tYW-H8-4BK"/>
+                            <constraint firstAttribute="trailing" secondItem="2u3-OL-ZDj" secondAttribute="trailing" id="w8F-wB-Pyb"/>
+                            <constraint firstItem="qSd-hd-Rhd" firstAttribute="leading" secondItem="vPk-yU-xwb" secondAttribute="leading" id="xEC-hA-BsM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="5SY-ao-1uY" id="Uhd-ik-0Sd"/>
+                        <outlet property="feedbackLabel" destination="NqS-af-Tcr" id="zH2-C3-mel"/>
+                        <outlet property="slideView" destination="2u3-OL-ZDj" id="Dp4-97-Pnl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nlf-W5-kkr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="995.07042253521126" y="3885"/>
         </scene>
         <!--Student Settings View Controller-->
         <scene sceneID="eSy-F6-bDk">
@@ -776,7 +929,7 @@
                                             <color key="titleColor" red="0.30196078430000001" green="0.31372549020000001" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="IaF-hd-8wr" kind="showDetail" action="showViewController:sender:" id="fz6-p6-0I6"/>
+                                            <action selector="backButtonAction:" destination="dFE-eW-8dy" eventType="touchUpInside" id="Sbp-Hh-OOV"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Oq-cD-pWW">
@@ -840,7 +993,6 @@
                         <outlet property="negativeFeedbackButton" destination="Kz0-Vg-9cw" id="Kdo-hp-fAj"/>
                         <outlet property="positiveFeedbackButton" destination="5Oq-cD-pWW" id="73V-J5-lRv"/>
                         <outlet property="slideView" destination="C10-Xt-NKo" id="cDB-0Z-Xqy"/>
-                        <segue destination="IaF-hd-8wr" kind="showDetail" identifier="endSlideStudent" action="showViewController:sender:" id="78I-cU-uQi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cBW-tw-vAi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -849,9 +1001,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fz6-p6-0I6"/>
-        <segue reference="GIC-Hq-1vu"/>
-        <segue reference="qmU-Nv-l5g"/>
         <segue reference="dXE-sP-bSm"/>
+        <segue reference="qmU-Nv-l5g"/>
     </inferredMetricsTieBreakers>
 </document>

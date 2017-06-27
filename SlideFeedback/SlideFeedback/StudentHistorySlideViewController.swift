@@ -1,22 +1,20 @@
 //
-//  LectureHistorySlideViewController.swift
+//  StudentHistorySlideViewController.swift
 //  SlideFeedback
 //
-//  Created by Thomas Kamps on 22-06-17.
+//  Created by Thomas Kamps on 27-06-17.
 //  Copyright © 2017 Thomas Kamps. All rights reserved.
 //
 
 import UIKit
 
-class LectureHistorySlideViewController: UIViewController, UIWebViewDelegate {
-
+class StudentHistorySlideViewController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var slideView: UIWebView!
     @IBOutlet weak var feedbackLabel: UILabel!
     
     @IBAction func nextButton(_ sender: Any) {
-        
         if (self.currentPresentation?.currentPage)! < ((self.currentPresentation?.numPages)! - 1) {
             
             self.currentPresentation?.currentPage += 1
@@ -25,7 +23,6 @@ class LectureHistorySlideViewController: UIViewController, UIWebViewDelegate {
     }
     
     @IBAction func previousButton(_ sender: Any) {
-        
         if (self.currentPresentation?.currentPage)! > 0 {
             
             self.currentPresentation?.currentPage -= 1
@@ -33,17 +30,17 @@ class LectureHistorySlideViewController: UIViewController, UIWebViewDelegate {
         }
     }
     
-    @IBAction func backButtonAction(_ sender: Any) {
+    
+    @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
     let db = FirebaseManager.sharedInstance
     var currentPresentation: Slide?
-    
+
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view.
         self.slideView.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(self.alertConnection(notification:)), name: Notification.Name("alertConnection"), object: nil)
@@ -53,9 +50,8 @@ class LectureHistorySlideViewController: UIViewController, UIWebViewDelegate {
             slideViewLoad(urlString: (self.currentPresentation?.buildUrlString())!)
         }
     }
-    
+
     override func didReceiveMemoryWarning() {
-        
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
