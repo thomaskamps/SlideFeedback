@@ -20,7 +20,7 @@ class StudenHistoryViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        NotificationCenter.default.addObserver(self, selector: #selector(self.newLectureHistory(notification:)), name: Notification.Name("newLectureHistory"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.newHistory(notification:)), name: Notification.Name("newHistory"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.alertConnection(notification:)), name: Notification.Name("alertConnection"), object: nil)
     }
 
@@ -30,14 +30,14 @@ class StudenHistoryViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        db.getLecturerHistory()
+        db.getHistory()
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func newLectureHistory(notification: Notification) {
+    func newHistory(notification: Notification) {
         tableView.reloadData()
     }
 }
@@ -85,7 +85,7 @@ extension StudenHistoryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "studentHistoryCell", for: indexPath) as! LecturerHistoryTableViewCell
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "studentHistoryCell", for: indexPath) as! StudentHistoryTableViewCell
         let test = db.history?[Array(db.history!.keys)[indexPath.row]]
         cell.label.text = (test?["timeStamp"] as? String)! + " - " + (test?["name"] as? String)!
         

@@ -76,7 +76,9 @@ class LectureHistorySlideViewController: UIViewController, UIWebViewDelegate {
             
             let negative = feedbackProcessed["negative"]!
             let positive = feedbackProcessed["positive"]!
-            let feedbackString = "Feedback: " + String(describing: positive) + " positive, " + String(describing: negative) + " negative"
+            let studentCount = feedbackProcessed["studentCount"]!
+            
+            let feedbackString = "Feedback: " + String(describing: positive) + " positive, " + String(describing: negative) + " negative, number of students: " + String(describing: studentCount)
             self.feedbackLabel.text = feedbackString
         }
         
@@ -84,18 +86,24 @@ class LectureHistorySlideViewController: UIViewController, UIWebViewDelegate {
     
     func getFeedback(feedbackData: [String:[String:Any]]) -> [String: Int] {
         
-        var returnFeedback: [String:Int] = ["negative": 0, "positive": 0]
+        var returnFeedback: [String:Int] = ["negative": 0, "positive": 0, "studentCount": 1]
+        var total = 0
+        var count = 0
         
         for x in feedbackData.keys {
             
             let page = feedbackData[x]?["page"] as! Int
             let feedback = feedbackData[x]?["feedback"] as! String
+            let studentCount = feedbackData[x]?["studentCount"] as? Int ?? 1
             
             if (feedback == "positive" || feedback == "negative") && page == self.currentPresentation?.currentPage {
                 returnFeedback[feedback]! += 1
+                total += studentCount
+                count += 1
             }
         }
         
+        returnFeedback["studentCount"] = total / count
         return returnFeedback
     }
     

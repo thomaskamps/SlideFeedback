@@ -16,6 +16,7 @@ class SocketIOManager {
     
     var rooms: [String:[String:Any]] = [:]
     var currentRoom: Slide?
+    var currentStudentCount: Int?
     
     private init() {}
     
@@ -106,12 +107,18 @@ class SocketIOManager {
         
         socket.on("feedback") {data, ack in
             
-            if data[0] as! String == "negative" {
+            let newData = data[0] as! [String: Any]
+            
+            if newData["feedback"] as! String == "negative" {
                 NotificationCenter.default.post(name: Notification.Name("receiveNegativeFeedback"), object: nil)
             }
             
-            if data[0] as! String == "positive" {
+            if newData["feedback"] as! String == "positive" {
                 NotificationCenter.default.post(name: Notification.Name("receivePositiveFeedback"), object: nil)
+            }
+            
+            if let studentCount = newData["studentCount"] as? Int {
+                self.currentStudentCount = studentCount
             }
         }
     }

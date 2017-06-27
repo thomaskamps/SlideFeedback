@@ -585,7 +585,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="label" destination="Pnu-LG-qDs" id="wy7-T2-eP8"/>
-                                            <segue destination="mic-44-r36" kind="show" identifier="showStudentHistorySegue" trigger="accessoryAction" id="886-Uk-7SQ"/>
+                                            <segue destination="mic-44-r36" kind="show" identifier="showStudentHistorySegue" id="MIG-dP-vPj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -680,7 +680,7 @@
                                 <rect key="frame" x="0.0" y="85" width="568" height="186"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="5SY-ao-1uY">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="5SY-ao-1uY">
                                 <rect key="frame" x="274" y="150" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>

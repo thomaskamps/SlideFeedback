@@ -82,7 +82,7 @@ class SlideViewController: UIViewController, UIWebViewDelegate {
         
         negativeFeedbackButton.isEnabled = false
         positiveFeedbackButton.isEnabled = false
-        db.saveFeedback(uniqueID: (sio.currentRoom?.uniqueID)!, currentPage: (sio.currentRoom?.currentPage)!, feedback: "negative")
+        db.saveFeedback(uniqueID: (sio.currentRoom?.uniqueID)!, currentPage: (sio.currentRoom?.currentPage)!, feedback: "negative", studentCount: nil)
         
         sio.sendFeedback(feedback: "negative")
     }
@@ -91,7 +91,7 @@ class SlideViewController: UIViewController, UIWebViewDelegate {
         
         negativeFeedbackButton.isEnabled = false
         positiveFeedbackButton.isEnabled = false
-        db.saveFeedback(uniqueID: (sio.currentRoom?.uniqueID)!, currentPage: (sio.currentRoom?.currentPage)!, feedback: "positive")
+        db.saveFeedback(uniqueID: (sio.currentRoom?.uniqueID)!, currentPage: (sio.currentRoom?.currentPage)!, feedback: "positive", studentCount: nil)
         
         sio.sendFeedback(feedback: "positive")
     }

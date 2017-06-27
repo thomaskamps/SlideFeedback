@@ -87,13 +87,13 @@ class LecturerSlideViewController: UIViewController, UIWebViewDelegate {
     
     func receiveNegativeFeedback(notification: Notification) {
         
-        db.saveFeedback(uniqueID: (sio.currentRoom?.uniqueID)!, currentPage: (sio.currentRoom?.currentPage)!, feedback: "negative")
+        db.saveFeedback(uniqueID: (sio.currentRoom?.uniqueID)!, currentPage: (sio.currentRoom?.currentPage)!, feedback: "negative", studentCount: sio.currentStudentCount ?? 1)
         self.alert(title: "You received feedback", message: "Unfortunately it is negative")
     }
     
     func receivePositiveFeedback(notification: Notification) {
         
-        db.saveFeedback(uniqueID: (sio.currentRoom?.uniqueID)!, currentPage: (sio.currentRoom?.currentPage)!, feedback: "positive")
+        db.saveFeedback(uniqueID: (sio.currentRoom?.uniqueID)!, currentPage: (sio.currentRoom?.currentPage)!, feedback: "positive", studentCount: sio.currentStudentCount ?? 1)
         self.alert(title: "You received feedback", message: "Yeah it is positive")
     }
     

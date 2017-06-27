@@ -114,22 +114,23 @@ class FirebaseManager {
         self.ref.child("users").child(self.userID!).child(self.getRefName()).child(uniqueID).setValue(data)
     }
     
-    func saveFeedback(uniqueID: String, currentPage: Int, feedback: String) {
+    func saveFeedback(uniqueID: String, currentPage: Int, feedback: String, studentCount: Int?) {
         
         let feedbackRef = self.ref.child("users").child(self.userID!).child(self.getRefName()).child(uniqueID).child("feedback")
         let key = feedbackRef.childByAutoId().key
-        feedbackRef.child(key).setValue(["page": currentPage, "feedback": feedback])
+        
+        feedbackRef.child(key).setValue(["page": currentPage, "feedback": feedback, "studentCount": studentCount])
     }
     
-    func getLecturerHistory() {
+    func getHistory() {
         
-        self.ref.child("users").child(self.userID!).child("presentations").observeSingleEvent(of: .value, with: { (snapshot) in
+        self.ref.child("users").child(self.userID!).child(self.getRefName()).observeSingleEvent(of: .value, with: { (snapshot) in
             
             if let histDict = snapshot.value as? [String : [String : Any]] {
             
                 self.history = histDict
             
-                NotificationCenter.default.post(name: Notification.Name("newLectureHistory"), object: nil)
+                NotificationCenter.default.post(name: Notification.Name("newHistory"), object: nil)
             }
         })
     }
