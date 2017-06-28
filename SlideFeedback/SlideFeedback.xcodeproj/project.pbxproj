@@ -14,9 +14,9 @@
 		CE106B921EE97C9500799305 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE106B911EE97C9500799305 /* GoogleService-Info.plist */; };
 		CE106B941EE987D700799305 /* SlidelistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE106B931EE987D700799305 /* SlidelistViewController.swift */; };
 		CE106B961EE98B6500799305 /* SlideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE106B951EE98B6500799305 /* SlideTableViewCell.swift */; };
-		CE42047C1EFBE955005955B7 /* LectureHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42047B1EFBE955005955B7 /* LectureHistoryViewController.swift */; };
-		CE4204801EFBEB09005955B7 /* LecturerHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42047F1EFBEB09005955B7 /* LecturerHistoryTableViewCell.swift */; };
-		CE4204821EFC01ED005955B7 /* LectureHistorySlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4204811EFC01ED005955B7 /* LectureHistorySlideViewController.swift */; };
+		CE42047C1EFBE955005955B7 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42047B1EFBE955005955B7 /* HistoryViewController.swift */; };
+		CE4204801EFBEB09005955B7 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42047F1EFBEB09005955B7 /* HistoryTableViewCell.swift */; };
+		CE4204821EFC01ED005955B7 /* HistorySlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4204811EFC01ED005955B7 /* HistorySlideViewController.swift */; };
 		CE4204881F026907005955B7 /* StudentHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4204871F026907005955B7 /* StudentHistoryTableViewCell.swift */; };
 		CE42048A1F026977005955B7 /* StudenHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4204891F026977005955B7 /* StudenHistoryViewController.swift */; };
 		CE42048C1F026B67005955B7 /* StudentHistorySlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42048B1F026B67005955B7 /* StudentHistorySlideViewController.swift */; };
@@ -31,8 +31,7 @@
 		CE9D018B1EE82B45005CD1D5 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D018A1EE82B45005CD1D5 /* RegisterViewController.swift */; };
 		CE9D018F1EE8A5CC005CD1D5 /* webViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D018E1EE8A5CC005CD1D5 /* webViewExtension.swift */; };
 		CEA07D311EE8B12600142EC5 /* SlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA07D301EE8B12600142EC5 /* SlideViewController.swift */; };
-		CEAE35E21EF94E370072DF18 /* StudentSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE35E11EF94E370072DF18 /* StudentSettingsViewController.swift */; };
-		CEAE35E41EF950100072DF18 /* LecturerSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE35E31EF950100072DF18 /* LecturerSettingsViewController.swift */; };
+		CEAE35E21EF94E370072DF18 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE35E11EF94E370072DF18 /* SettingsViewController.swift */; };
 		F30106CE0947A9F64655DC9B /* Pods_SlideFeedback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF09D8CFDB1A4708FE8EB179 /* Pods_SlideFeedback.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,9 +46,9 @@
 		CE106B911EE97C9500799305 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CE106B931EE987D700799305 /* SlidelistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidelistViewController.swift; sourceTree = "<group>"; };
 		CE106B951EE98B6500799305 /* SlideTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideTableViewCell.swift; sourceTree = "<group>"; };
-		CE42047B1EFBE955005955B7 /* LectureHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureHistoryViewController.swift; sourceTree = "<group>"; };
-		CE42047F1EFBEB09005955B7 /* LecturerHistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturerHistoryTableViewCell.swift; sourceTree = "<group>"; };
-		CE4204811EFC01ED005955B7 /* LectureHistorySlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureHistorySlideViewController.swift; sourceTree = "<group>"; };
+		CE42047B1EFBE955005955B7 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		CE42047F1EFBEB09005955B7 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		CE4204811EFC01ED005955B7 /* HistorySlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistorySlideViewController.swift; sourceTree = "<group>"; };
 		CE4204871F026907005955B7 /* StudentHistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		CE4204891F026977005955B7 /* StudenHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudenHistoryViewController.swift; sourceTree = "<group>"; };
 		CE42048B1F026B67005955B7 /* StudentHistorySlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentHistorySlideViewController.swift; sourceTree = "<group>"; };
@@ -66,8 +65,7 @@
 		CE9D018A1EE82B45005CD1D5 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		CE9D018E1EE8A5CC005CD1D5 /* webViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = webViewExtension.swift; sourceTree = "<group>"; };
 		CEA07D301EE8B12600142EC5 /* SlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideViewController.swift; sourceTree = "<group>"; };
-		CEAE35E11EF94E370072DF18 /* StudentSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentSettingsViewController.swift; sourceTree = "<group>"; };
-		CEAE35E31EF950100072DF18 /* LecturerSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturerSettingsViewController.swift; sourceTree = "<group>"; };
+		CEAE35E11EF94E370072DF18 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,12 +80,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE2BF9071F03C7D900372597 /* Old */ = {
+			isa = PBXGroup;
+			children = (
+				CE42048B1F026B67005955B7 /* StudentHistorySlideViewController.swift */,
+				CE4204871F026907005955B7 /* StudentHistoryTableViewCell.swift */,
+				CE4204891F026977005955B7 /* StudenHistoryViewController.swift */,
+			);
+			name = Old;
+			sourceTree = "<group>";
+		};
 		CE4204831EFFF589005955B7 /* Lecturer */ = {
 			isa = PBXGroup;
 			children = (
-				CE4204811EFC01ED005955B7 /* LectureHistorySlideViewController.swift */,
-				CE42047B1EFBE955005955B7 /* LectureHistoryViewController.swift */,
-				CEAE35E31EF950100072DF18 /* LecturerSettingsViewController.swift */,
 				CE8520BA1EF165560034DCC2 /* LecturerSlideViewController.swift */,
 				CE8520B81EF14C760034DCC2 /* WaitingViewController.swift */,
 			);
@@ -97,9 +102,6 @@
 		CE4204841EFFF59D005955B7 /* Student */ = {
 			isa = PBXGroup;
 			children = (
-				CE42048B1F026B67005955B7 /* StudentHistorySlideViewController.swift */,
-				CEAE35E11EF94E370072DF18 /* StudentSettingsViewController.swift */,
-				CE4204891F026977005955B7 /* StudenHistoryViewController.swift */,
 				CEA07D301EE8B12600142EC5 /* SlideViewController.swift */,
 				CE106B931EE987D700799305 /* SlidelistViewController.swift */,
 			);
@@ -112,6 +114,10 @@
 				CE4204841EFFF59D005955B7 /* Student */,
 				CE4204831EFFF589005955B7 /* Lecturer */,
 				CE9D017A1EE82AD2005CD1D5 /* LoginViewController.swift */,
+				CE42047B1EFBE955005955B7 /* HistoryViewController.swift */,
+				CE4204811EFC01ED005955B7 /* HistorySlideViewController.swift */,
+				CE2BF9071F03C7D900372597 /* Old */,
+				CEAE35E11EF94E370072DF18 /* SettingsViewController.swift */,
 				CE9D018A1EE82B45005CD1D5 /* RegisterViewController.swift */,
 			);
 			name = ViewControllers;
@@ -158,11 +164,10 @@
 		CE9D01771EE82AD2005CD1D5 /* SlideFeedback */ = {
 			isa = PBXGroup;
 			children = (
-				CE42047F1EFBEB09005955B7 /* LecturerHistoryTableViewCell.swift */,
+				CE42047F1EFBEB09005955B7 /* HistoryTableViewCell.swift */,
 				CE9D01781EE82AD2005CD1D5 /* AppDelegate.swift */,
 				CE106B951EE98B6500799305 /* SlideTableViewCell.swift */,
 				CE9D017C1EE82AD2005CD1D5 /* Main.storyboard */,
-				CE4204871F026907005955B7 /* StudentHistoryTableViewCell.swift */,
 				CE97D5101EF2AF360039BCF8 /* ViewControllers */,
 				CE97D5111EF2AF840039BCF8 /* Models */,
 				CE97D5121EF2AF890039BCF8 /* Extensions */,
@@ -321,12 +326,11 @@
 				CE106B961EE98B6500799305 /* SlideTableViewCell.swift in Sources */,
 				CE8520BB1EF165560034DCC2 /* LecturerSlideViewController.swift in Sources */,
 				CE4204881F026907005955B7 /* StudentHistoryTableViewCell.swift in Sources */,
-				CE4204801EFBEB09005955B7 /* LecturerHistoryTableViewCell.swift in Sources */,
+				CE4204801EFBEB09005955B7 /* HistoryTableViewCell.swift in Sources */,
 				CE106B941EE987D700799305 /* SlidelistViewController.swift in Sources */,
-				CEAE35E41EF950100072DF18 /* LecturerSettingsViewController.swift in Sources */,
-				CEAE35E21EF94E370072DF18 /* StudentSettingsViewController.swift in Sources */,
-				CE4204821EFC01ED005955B7 /* LectureHistorySlideViewController.swift in Sources */,
-				CE42047C1EFBE955005955B7 /* LectureHistoryViewController.swift in Sources */,
+				CEAE35E21EF94E370072DF18 /* SettingsViewController.swift in Sources */,
+				CE4204821EFC01ED005955B7 /* HistorySlideViewController.swift in Sources */,
+				CE42047C1EFBE955005955B7 /* HistoryViewController.swift in Sources */,
 				CE106B8C1EE9792C00799305 /* FirebaseManager.swift in Sources */,
 				CE9D018B1EE82B45005CD1D5 /* RegisterViewController.swift in Sources */,
 				CE42048A1F026977005955B7 /* StudenHistoryViewController.swift in Sources */,

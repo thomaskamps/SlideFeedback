@@ -1,5 +1,5 @@
 //
-//  StudentSettingsViewController.swift
+//  SettingsViewController.swift
 //  SlideFeedback
 //
 //  Created by Thomas Kamps on 20-06-17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StudentSettingsViewController: UIViewController {
+class SettingsViewController: UIViewController {
     
     var db = FirebaseManager.sharedInstance
 

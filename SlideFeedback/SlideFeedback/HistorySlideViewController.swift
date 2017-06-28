@@ -1,5 +1,5 @@
 //
-//  LectureHistorySlideViewController.swift
+//  SlideViewController.swift
 //  SlideFeedback
 //
 //  Created by Thomas Kamps on 22-06-17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LectureHistorySlideViewController: UIViewController, UIWebViewDelegate {
+class HistorySlideViewController: UIViewController, UIWebViewDelegate {
 
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -64,24 +64,35 @@ class LectureHistorySlideViewController: UIViewController, UIWebViewDelegate {
         
         let url: NSURL! = NSURL(string: urlString)
         self.slideView.loadRequest(NSURLRequest(url: url as URL) as URLRequest)
-        let feedback = db.history?[(self.currentPresentation?.uniqueID)!]?["feedback"] as! [String: Any]
-        let feedbackProcessed = self.getFeedback(feedbackData: feedback as! [String : [String : Any]])
         
-        if feedbackProcessed["negative"] == 0 && feedbackProcessed["positive"] == 0 {
+        if let feedback = db.history?[(self.currentPresentation?.uniqueID)!]?["feedback"] as? [String: Any] {
+            
+            let feedbackProcessed = self.getFeedback(feedbackData: feedback as! [String : [String : Any]])
+            
+            if feedbackProcessed["negative"] == 0 && feedbackProcessed["positive"] == 0 {
+                
+                let feedbackString = "No feedback"
+                self.feedbackLabel.text = feedbackString
+                
+            } else {
+                
+                let negative = feedbackProcessed["negative"]!
+                let positive = feedbackProcessed["positive"]!
+                let studentCount = feedbackProcessed["studentCount"]!
+                
+                var feedbackString = "Feedback: " + String(describing: positive) + " positive, " + String(describing: negative) + " negative"
+                
+                if self.db.role == 20 {
+                    feedbackString += ", number of students: " + String(describing: studentCount)
+                }
+                
+                self.feedbackLabel.text = feedbackString
+            }
+        } else {
             
             let feedbackString = "No feedback"
             self.feedbackLabel.text = feedbackString
-            
-        } else {
-            
-            let negative = feedbackProcessed["negative"]!
-            let positive = feedbackProcessed["positive"]!
-            let studentCount = feedbackProcessed["studentCount"]!
-            
-            let feedbackString = "Feedback: " + String(describing: positive) + " positive, " + String(describing: negative) + " negative, number of students: " + String(describing: studentCount)
-            self.feedbackLabel.text = feedbackString
         }
-        
     }
     
     func getFeedback(feedbackData: [String:[String:Any]]) -> [String: Int] {
@@ -103,7 +114,9 @@ class LectureHistorySlideViewController: UIViewController, UIWebViewDelegate {
             }
         }
         
-        returnFeedback["studentCount"] = total / count
+        if total != 0 && count != 0 {
+            returnFeedback["studentCount"] = total / count
+        }
         return returnFeedback
     }
     

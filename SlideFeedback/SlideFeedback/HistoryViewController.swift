@@ -1,5 +1,5 @@
 //
-//  LectureHistoryViewController.swift
+//  HistoryViewController.swift
 //  SlideFeedback
 //
 //  Created by Thomas Kamps on 22-06-17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LectureHistoryViewController: UIViewController {
+class HistoryViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -42,13 +42,13 @@ class LectureHistoryViewController: UIViewController {
     }
 }
 
-extension LectureHistoryViewController: UITableViewDelegate {
+extension HistoryViewController: UITableViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "showHistorySegue" {
             
-            let vc = segue.destination as! LectureHistorySlideViewController
+            let vc = segue.destination as! HistorySlideViewController
             let unique_id =  Array(db.history!.keys)[(tableView.indexPathForSelectedRow?.row)!]
             var data = self.db.history?[unique_id]
             data?["timestamp"] = data?["timeStamp"]
@@ -70,7 +70,7 @@ extension LectureHistoryViewController: UITableViewDelegate {
     }
 }
 
-extension LectureHistoryViewController: UITableViewDataSource {
+extension HistoryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -85,7 +85,7 @@ extension LectureHistoryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "lecturerHistoryCell", for: indexPath) as! LecturerHistoryTableViewCell
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryTableViewCell
         let test = db.history?[Array(db.history!.keys)[indexPath.row]]
         cell.label.text = (test?["timeStamp"] as? String)! + " - " + (test?["name"] as? String)!
         

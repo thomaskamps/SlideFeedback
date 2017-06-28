@@ -52,18 +52,15 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="more" id="r1U-MG-LSN"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="logOutSegue" id="qmU-Nv-l5g"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z2g-4z-1DF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3134.1549295774648" y="2658.75"/>
+            <point key="canvasLocation" x="-3400" y="107"/>
         </scene>
-        <!--Lecture History View Controller-->
+        <!--History View Controller-->
         <scene sceneID="b9L-Sd-cdk">
             <objects>
-                <viewController id="Yir-5C-UNg" customClass="LectureHistoryViewController" customModule="SlideFeedback" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Yir-5C-UNg" customClass="HistoryViewController" customModule="SlideFeedback" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mQe-Vt-0UG"/>
                         <viewControllerLayoutGuide type="bottom" id="VCZ-QA-vuv"/>
@@ -75,8 +72,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MMX-dY-mpe">
                                 <rect key="frame" x="0.0" y="0.0" width="568" height="85"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please choose the presentation you want to review:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJK-KU-0Pq">
-                                        <rect key="frame" x="8" y="43" width="415" height="22"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please choose the lecture you want to review:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJK-KU-0Pq">
+                                        <rect key="frame" x="8" y="43" width="370" height="22"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -93,7 +90,7 @@
                                 <rect key="frame" x="0.0" y="83" width="568" height="188"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="lecturerHistoryCell" id="gsg-dC-ffe" customClass="LecturerHistoryTableViewCell" customModule="SlideFeedback" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="historyCell" id="gsg-dC-ffe" customClass="HistoryTableViewCell" customModule="SlideFeedback" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="568" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gsg-dC-ffe" id="z4b-UN-vUD">
@@ -138,12 +135,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cjt-CG-rZk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2071.4788732394368" y="2690.625"/>
+            <point key="canvasLocation" x="-1836" y="2659"/>
         </scene>
-        <!--Lecture History Slide View Controller-->
+        <!--History Slide View Controller-->
         <scene sceneID="zTd-DS-tyK">
             <objects>
-                <viewController id="wb7-gy-njK" customClass="LectureHistorySlideViewController" customModule="SlideFeedback" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wb7-gy-njK" customClass="HistorySlideViewController" customModule="SlideFeedback" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0pl-w4-SyQ"/>
                         <viewControllerLayoutGuide type="bottom" id="bqd-DZ-pe7"/>
@@ -206,11 +203,11 @@
                                 </constraints>
                             </view>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V94-8c-6Ih">
-                                <rect key="frame" x="0.0" y="85" width="568" height="235"/>
+                                <rect key="frame" x="0.0" y="85" width="568" height="186"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="sGc-e0-9hg">
-                                <rect key="frame" x="274" y="192.5" width="20" height="20"/>
+                                <rect key="frame" x="274" y="168" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -234,7 +231,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Evc-pI-nCp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2138.0281690140846" y="3885"/>
+            <point key="canvasLocation" x="-1837" y="3885"/>
         </scene>
         <!--Waiting View Controller-->
         <scene sceneID="i4Q-LZ-TiK">
@@ -273,7 +270,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yaf-l4-dw0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1082" y="2659"/>
+            <point key="canvasLocation" x="-2743" y="2659"/>
         </scene>
         <!--Lecturer Slide View Controller-->
         <scene sceneID="rJm-3q-8Uy">
@@ -360,7 +357,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hcg-jp-5Nc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1082" y="3885"/>
+            <point key="canvasLocation" x="-2743" y="3885"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -375,7 +372,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efQ-5S-7Go">
-                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                                <rect key="frame" x="0.0" y="0.0" width="568" height="271"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uoC-z9-XfD">
                                         <rect key="frame" x="55" y="92.5" width="458" height="30"/>
@@ -532,7 +529,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p04-v3-QVi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32" y="2659"/>
+            <point key="canvasLocation" x="1590" y="1749"/>
         </scene>
         <!--Studen History View Controller-->
         <scene sceneID="LuL-fe-ApF">
@@ -609,7 +606,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zxX-Gm-hhc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="996.12676056338034" y="2658.75"/>
+            <point key="canvasLocation" x="152" y="2659"/>
         </scene>
         <!--Student History Slide View Controller-->
         <scene sceneID="SlG-oJ-ZQf">
@@ -705,12 +702,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nlf-W5-kkr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="995.07042253521126" y="3885"/>
+            <point key="canvasLocation" x="151" y="3833"/>
         </scene>
-        <!--Student Settings View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="eSy-F6-bDk">
             <objects>
-                <viewController id="IDM-fu-CeU" customClass="StudentSettingsViewController" customModule="SlideFeedback" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="IDM-fu-CeU" customClass="SettingsViewController" customModule="SlideFeedback" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KLY-6g-8vW"/>
                         <viewControllerLayoutGuide type="bottom" id="VJB-M4-g7n"/>
@@ -755,7 +752,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H4A-vA-6Cq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1966.9014084507041" y="2658.75"/>
+            <point key="canvasLocation" x="-866" y="2659"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="EOd-N2-OOb">
@@ -769,7 +766,7 @@
                     <connections>
                         <segue destination="c75-qp-dxT" kind="relationship" relationship="viewControllers" id="GIC-Hq-1vu"/>
                         <segue destination="Yir-5C-UNg" kind="relationship" relationship="viewControllers" id="zGd-hq-VAv"/>
-                        <segue destination="9Z2-aC-cfz" kind="relationship" relationship="viewControllers" id="zP1-pz-uGG"/>
+                        <segue destination="IDM-fu-CeU" kind="relationship" relationship="viewControllers" id="2b8-tV-tZP"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gqt-uU-Gdj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -787,8 +784,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="IaF-hd-8wr" kind="relationship" relationship="viewControllers" id="5zI-Xw-0UB"/>
-                        <segue destination="wED-8H-lOb" kind="relationship" relationship="viewControllers" id="PMK-Sz-4Ah"/>
-                        <segue destination="IDM-fu-CeU" kind="relationship" relationship="viewControllers" id="Zc9-YH-Akm"/>
+                        <segue destination="Yir-5C-UNg" kind="relationship" relationship="viewControllers" id="05u-tH-F0p"/>
+                        <segue destination="IDM-fu-CeU" kind="relationship" relationship="viewControllers" id="3Xy-a6-cok"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T8K-uZ-sML" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -997,11 +994,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cBW-tw-vAi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32" y="3885"/>
+            <point key="canvasLocation" x="1786" y="2818"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="05u-tH-F0p"/>
         <segue reference="dXE-sP-bSm"/>
-        <segue reference="qmU-Nv-l5g"/>
+        <segue reference="9EX-UB-Pe5"/>
+        <segue reference="3Xy-a6-cok"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LecturerHistoryTableViewCell: UITableViewCell {
+class HistoryTableViewCell: UITableViewCell {
     
     @IBOutlet weak var label: UILabel!
     
