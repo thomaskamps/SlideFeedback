@@ -12,6 +12,8 @@ class LecturerSlideViewController: UIViewController, UIWebViewDelegate {
         
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var slideView: UIWebView!
+    @IBOutlet weak var menuBar: UIView!
+    @IBOutlet weak var feedbackLabel: UILabel!
     
     @IBAction func nextButton(_ sender: Any) {
         
@@ -39,6 +41,10 @@ class LecturerSlideViewController: UIViewController, UIWebViewDelegate {
     
     let sio = SocketIOManager.sharedInstance
     let db = FirebaseManager.sharedInstance
+    var currentNegativeFeedback = 0
+    var currentPositiveFeedback = 0
+    let neutralColor = UIColor(red:0.56, green:0.75, blue:0.66, alpha:1.0)
+    let alertColor = UIColor(red:0.98, green:0.77, blue:0.27, alpha:1.0)
 
     override func viewDidLoad() {
         
@@ -70,6 +76,12 @@ class LecturerSlideViewController: UIViewController, UIWebViewDelegate {
     
     func slideViewLoad(urlString: String) {
         
+        // reset feedback indications to neutral
+        self.currentPositiveFeedback = 0
+        self.currentNegativeFeedback = 0
+        self.menuBar.backgroundColor = self.neutralColor
+        self.feedbackLabel.text = ""
+        
         let url: NSURL! = NSURL(string: urlString)
         self.slideView.loadRequest(NSURLRequest(url: url as URL) as URLRequest)
     }
@@ -88,13 +100,53 @@ class LecturerSlideViewController: UIViewController, UIWebViewDelegate {
     func receiveNegativeFeedback(notification: Notification) {
         
         db.saveFeedback(uniqueID: (sio.currentRoom?.uniqueID)!, currentPage: (sio.currentRoom?.currentPage)!, feedback: "negative", studentCount: sio.currentStudentCount ?? 1)
-        self.alert(title: "You received feedback", message: "Unfortunately it is negative")
+        self.currentNegativeFeedback += 1
+        self.processFeedback()
+        //self.alert(title: "You received feedback", message: "Unfortunately it is negative")
     }
     
     func receivePositiveFeedback(notification: Notification) {
         
         db.saveFeedback(uniqueID: (sio.currentRoom?.uniqueID)!, currentPage: (sio.currentRoom?.currentPage)!, feedback: "positive", studentCount: sio.currentStudentCount ?? 1)
-        self.alert(title: "You received feedback", message: "Yeah it is positive")
+        self.currentPositiveFeedback += 1
+        self.processFeedback()
+        //self.alert(title: "You received feedback", message: "Yeah it is positive")
+    }
+    
+    func processFeedback() {
+        
+        if self.currentNegativeFeedback >= self.currentPositiveFeedback {
+            let effectiveFeedback = self.currentNegativeFeedback - self.currentPositiveFeedback
+            let feedbackRatio = self.getFeedbackRatio(effectiveFeedback: effectiveFeedback)
+            if feedbackRatio > 0.3 {
+                self.menuBar.backgroundColor = self.alertColor
+                self.feedbackLabel.text = String(Int(feedbackRatio*100)) + "% of students are negative"
+            } else {
+                self.menuBar.backgroundColor = self.neutralColor
+                self.feedbackLabel.text = ""
+            }
+            
+        } else {
+            let effectiveFeedback = self.currentPositiveFeedback - self.currentNegativeFeedback
+            let feedbackRatio = self.getFeedbackRatio(effectiveFeedback: effectiveFeedback)
+            if feedbackRatio > 0.3 {
+                self.menuBar.backgroundColor = self.alertColor
+                self.feedbackLabel.text = String(Int(feedbackRatio*100)) + "% of students are positive"
+            } else {
+                self.menuBar.backgroundColor = self.neutralColor
+                self.feedbackLabel.text = ""
+            }
+        }
+    }
+    
+    func getFeedbackRatio(effectiveFeedback: Int) -> Float {
+        if sio.currentStudentCount != nil && sio.currentStudentCount != 0 {
+            let temp = Float(effectiveFeedback) / Float(sio.currentStudentCount!)
+            print(temp)
+            return temp
+        } else {
+            return Float(0)
+        }
     }
     
     deinit {

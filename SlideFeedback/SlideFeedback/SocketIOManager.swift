@@ -25,6 +25,11 @@ class SocketIOManager {
         socket.on(clientEvent: .connect) {data, ack in
             print("socket connected")
             self.getRooms()
+            
+            if self.currentRoom != nil {
+                self.joinRoom(room: (self.currentRoom?.dirName)!)
+                print("trying to join again")
+            }
         }
         
         socket.on(clientEvent: .error) {data, ack in
@@ -75,6 +80,7 @@ class SocketIOManager {
         socket.on("endLecture") {data, ack in
             NotificationCenter.default.post(name: Notification.Name("endSlides"), object: nil)
         }
+
     }
     
     func leaveRoom() {
