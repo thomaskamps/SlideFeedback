@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="eng">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>Feedback for Lectures upload system</title>
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
+		<script src="{{ url_for('static', filename='scripts.js') }}"></script>
+		
+	</head>
+	<body>
+		
+		<div class="container">
+	      <div class="header clearfix">
+	       <h3 class="text-muted">Upload slides for feedback presentations</h3>
+	      </div>
+	
+	      <div class="jumbotron" id="login" style="display: inherit">
+	        <p class="lead">Log in please:</p>
+		      <div class="input-group input-group-lg">
+				  <span class="input-group-addon" id="sizing-addon1">Username</span>
+				  <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1" id="username">
+			  </div><br/>
+			  <div class="input-group input-group-lg">
+				  <span class="input-group-addon" id="sizing-addon1">Password</span>
+				  <input type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1" id="password">
+			  </div><br/>
+	        <p><a class="btn btn-lg btn-success" href="#" role="button" id="loginButton" onclick="clickLogin();">Log in</a></p>
+	      </div>
+	      
+	      <div class="jumbotron" id="upload" style="display: none">
+	        <p class="lead">Here you can upload your slides, please only use .pdf formats.</p>
+	          <form method="post" enctype="multipart/form-data" onsubmit="return false;">
+		        <div class="input-group input-group-lg">
+				  <span class="input-group-addon" id="sizing-addon1">Name for presentation</span>
+				  <input type="text" class="form-control" placeholder="Name for presentation" aria-describedby="sizing-addon1" id="presentationname">
+			    </div><br/>
+			    <input id="file" type="file" name="file"><br/><br/>
+			  </form>
+			  <button type="button" class="btn btn-primary" onclick="formSubmit();">Submit</button><br/><br/>
+			  <button type="button" class="btn btn-primary" onclick="logout();">Log out</button><br/>
+	      </div>
+	
+	      <div class="row marketing" id="list" style="display: inherit">
+	        <div class="col-lg-6" id="addToList"></div>
+	
+	    </div>
+	
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		
+	</body>
+</html>
