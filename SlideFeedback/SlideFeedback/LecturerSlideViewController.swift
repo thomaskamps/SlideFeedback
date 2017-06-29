@@ -9,7 +9,8 @@
 import UIKit
 
 class LecturerSlideViewController: UIViewController, UIWebViewDelegate {
-        
+    
+    // declare outlets
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var slideView: UIWebView!
     @IBOutlet weak var menuBar: UIView!
@@ -17,8 +18,10 @@ class LecturerSlideViewController: UIViewController, UIWebViewDelegate {
     
     @IBAction func nextButton(_ sender: Any) {
         
+        // check if page exists
         if (sio.currentRoom?.currentPage)! < ((sio.currentRoom?.numPages)! - 1) {
             
+            // push new page to the server and load yourself
             sio.pageUp()
             slideViewLoad(urlString: (sio.currentRoom?.buildUrlString())!)
         }
@@ -26,8 +29,10 @@ class LecturerSlideViewController: UIViewController, UIWebViewDelegate {
     
     @IBAction func previousButton(_ sender: Any) {
         
+        // check if page exists
         if (sio.currentRoom?.currentPage)! > 0 {
             
+            // push new page to the server and load yourself
             sio.pageDown()
             slideViewLoad(urlString: (sio.currentRoom?.buildUrlString())!)
         }
@@ -35,10 +40,12 @@ class LecturerSlideViewController: UIViewController, UIWebViewDelegate {
     
     @IBAction func endSlideButton(_ sender: Any) {
         
+        // push endLecture notification to server and dismiss view
         sio.endLecture()
         self.dismiss(animated: true, completion: nil)
     }
     
+    // declare vars and models
     let sio = SocketIOManager.sharedInstance
     let db = FirebaseManager.sharedInstance
     var currentNegativeFeedback = 0
@@ -53,11 +60,14 @@ class LecturerSlideViewController: UIViewController, UIWebViewDelegate {
         // Do any additional setup after loading the view.
         self.slideView.delegate = self
         
+        // check if a room is selected
         if sio.currentRoom != nil {
             
+            // become lecturer for the selected lecture and load first slide
             sio.claimLecture()
-            
             slideViewLoad(urlString: (sio.currentRoom?.buildUrlString())!)
+            
+            // add observers
             NotificationCenter.default.addObserver(self, selector: #selector(self.receiveNegativeFeedback(notification:)), name: Notification.Name("receiveNegativeFeedback"), object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(self.receivePositiveFeedback(notification:)), name: Notification.Name("receivePositiveFeedback"), object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(self.alertConnection(notification:)), name: Notification.Name("alertConnection"), object: nil)
@@ -71,6 +81,7 @@ class LecturerSlideViewController: UIViewController, UIWebViewDelegate {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        
         NotificationCenter.default.removeObserver(self)
     }
     
@@ -82,74 +93,106 @@ class LecturerSlideViewController: UIViewController, UIWebViewDelegate {
         self.menuBar.backgroundColor = self.neutralColor
         self.feedbackLabel.text = ""
         
+        // load new slide
         let url: NSURL! = NSURL(string: urlString)
         self.slideView.loadRequest(NSURLRequest(url: url as URL) as URLRequest)
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         
+        // resize content and stop activityIndicator when finished loading
         self.slideView.resizeWebContent()
         activityIndicator.stopAnimating()
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
         
+        // start activityIndicator
         activityIndicator.startAnimating()
     }
     
     func receiveNegativeFeedback(notification: Notification) {
         
+        // save feedback to db
         db.saveFeedback(uniqueID: (sio.currentRoom?.uniqueID)!, currentPage: (sio.currentRoom?.currentPage)!, feedback: "negative", studentCount: sio.currentStudentCount ?? 1)
+        
+        // process in view
         self.currentNegativeFeedback += 1
         self.processFeedback()
-        //self.alert(title: "You received feedback", message: "Unfortunately it is negative")
     }
     
     func receivePositiveFeedback(notification: Notification) {
         
+        // save feedback to db
         db.saveFeedback(uniqueID: (sio.currentRoom?.uniqueID)!, currentPage: (sio.currentRoom?.currentPage)!, feedback: "positive", studentCount: sio.currentStudentCount ?? 1)
+        
+        // process in view
         self.currentPositiveFeedback += 1
         self.processFeedback()
-        //self.alert(title: "You received feedback", message: "Yeah it is positive")
     }
     
     func processFeedback() {
         
+        // process the current feedback if more than half is negative
         if self.currentNegativeFeedback >= self.currentPositiveFeedback {
+            
+            // substract feedbacks to calculate effective feedback, then calculate ratio with number of students
             let effectiveFeedback = self.currentNegativeFeedback - self.currentPositiveFeedback
             let feedbackRatio = self.getFeedbackRatio(effectiveFeedback: effectiveFeedback)
-            if feedbackRatio > 0.3 {
-                self.menuBar.backgroundColor = self.alertColor
-                self.feedbackLabel.text = String(Int(feedbackRatio*100)) + "% of students are negative"
-            } else {
-                self.menuBar.backgroundColor = self.neutralColor
-                self.feedbackLabel.text = ""
-            }
             
+            // update view to new feedback
+            let label = String(Int(feedbackRatio*100)) + "% of students think the pace is too high"
+            self.updateFeedbackView(ratio: feedbackRatio, label: label)
+        
+        // process the current feedback if more than half is positive
         } else {
+            
+            // substract feedbacks to calculate effective feedback, then calculate ratio with number of students
             let effectiveFeedback = self.currentPositiveFeedback - self.currentNegativeFeedback
             let feedbackRatio = self.getFeedbackRatio(effectiveFeedback: effectiveFeedback)
-            if feedbackRatio > 0.3 {
-                self.menuBar.backgroundColor = self.alertColor
-                self.feedbackLabel.text = String(Int(feedbackRatio*100)) + "% of students are positive"
-            } else {
-                self.menuBar.backgroundColor = self.neutralColor
-                self.feedbackLabel.text = ""
-            }
+            
+            // update view to new feedback
+            let label = String(Int(feedbackRatio*100)) + "% of students think the pace is too low"
+            self.updateFeedbackView(ratio: feedbackRatio, label: label)
+            
         }
     }
     
     func getFeedbackRatio(effectiveFeedback: Int) -> Float {
+        
+        // check if a valid student count is there
         if sio.currentStudentCount != nil && sio.currentStudentCount != 0 {
+            
+            // calculate ratio
             let temp = Float(effectiveFeedback) / Float(sio.currentStudentCount!)
-            print(temp)
             return temp
+            
+        // else return 0
         } else {
+            
             return Float(0)
         }
     }
     
+    func updateFeedbackView(ratio: Float, label: String) {
+        
+        // treshold is 0.3
+        if ratio > 0.3 {
+            
+            // alert lecturer
+            self.menuBar.backgroundColor = self.alertColor
+            self.feedbackLabel.text = label
+            
+        } else {
+            
+            // go back to neutral
+            self.menuBar.backgroundColor = self.neutralColor
+            self.feedbackLabel.text = ""
+        }
+    }
+    
     deinit {
+        
         NotificationCenter.default.removeObserver(self)
     }
 

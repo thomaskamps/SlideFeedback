@@ -11,17 +11,20 @@ import Firebase
 
 class FirebaseManager {
     
+    // make singleton
     static let sharedInstance = FirebaseManager()
-    var history: [String: [String: Any]]?
     
     private init() {
         
+        // listen for changes in authstate
         Auth.auth().addStateDidChangeListener() { auth, user in
             
+            // if a user is logged in
             if user != nil {
                 
                 self.userID = Auth.auth().currentUser?.uid
                 
+                // get users role
                 self.ref.child("users").child(self.userID!).observeSingleEvent(of: .value, with: { (snapshot) in
                     
                     let value = snapshot.value as? NSDictionary
@@ -32,6 +35,7 @@ class FirebaseManager {
                     
                     print(error.localizedDescription)
                 }
+                
             } else {
                 
                 NotificationCenter.default.post(name: Notification.Name("userLoggedOut"), object: nil)
@@ -41,9 +45,11 @@ class FirebaseManager {
         userID = Auth.auth().currentUser?.uid
     }
     
+    // init vars
     var ref = Database.database().reference()
     var userID: String?
     var role: Int?
+    var history: [String: [String: Any]]?
     
     // Log in and automatically set userID
     func login(email: String, password: String) throws {
@@ -89,6 +95,7 @@ class FirebaseManager {
             }
         }
         
+        // when user is created without errors, log him in
         if registerError == nil {
             
             do {
@@ -109,27 +116,29 @@ class FirebaseManager {
     
     func startSlides(dirName: String, uniqueID: String, timeStamp: String, name: String, numPages: Int) {
         
+        // save data for slides
         let data = ["dirName": dirName, "timeStamp": timeStamp, "name": name, "numPages": numPages] as [String : Any]
-        
         self.ref.child("users").child(self.userID!).child(self.getRefName()).child(uniqueID).setValue(data)
     }
     
     func saveFeedback(uniqueID: String, currentPage: Int, feedback: String, studentCount: Int?) {
         
+        // save data for feedback
         let feedbackRef = self.ref.child("users").child(self.userID!).child(self.getRefName()).child(uniqueID).child("feedback")
         let key = feedbackRef.childByAutoId().key
-        
         feedbackRef.child(key).setValue(["page": currentPage, "feedback": feedback, "studentCount": studentCount])
     }
     
     func getHistory() {
         
+        // retrieve historical data from db
         self.ref.child("users").child(self.userID!).child(self.getRefName()).observeSingleEvent(of: .value, with: { (snapshot) in
             
+            // if history data is valid
             if let histDict = snapshot.value as? [String : [String : Any]] {
-            
+                
+                // set data and notify
                 self.history = histDict
-            
                 NotificationCenter.default.post(name: Notification.Name("newHistory"), object: nil)
             }
         })
@@ -137,11 +146,14 @@ class FirebaseManager {
     
     func deletePresentation(uniqueID: String) {
         
+        // delete a presentation from history
         self.ref.child("users").child(self.userID!).child(self.getRefName()).child(uniqueID).removeValue()
     }
     
     func getRefName() -> String {
         
+        // history is for lecturers and students stored under a different name
+        // this is to prevent interference if a user is to switch roles
         if self.role == 20 {
             
             return "presentations"

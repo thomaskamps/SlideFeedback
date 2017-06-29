@@ -10,6 +10,7 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
+    // declare model
     var db = FirebaseManager.sharedInstance
 
     override func viewDidLoad() {
@@ -21,18 +22,20 @@ class SettingsViewController: UIViewController {
     }
 
     override func didReceiveMemoryWarning() {
+        
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        
         NotificationCenter.default.removeObserver(self)
     }
     
     @IBAction func logoutAction(_ sender: Any) {
         
         do {
-            
+            // try to log out
             try db.logOut()
             
         } catch let error as NSError {
@@ -42,10 +45,12 @@ class SettingsViewController: UIViewController {
     }
 
     func userLoggedOut(notification: Notification) {
+        
         self.performSegue(withIdentifier: "logOutSegue", sender: nil)
     }
     
     deinit {
+        
         NotificationCenter.default.removeObserver(self)
     }
 }

@@ -10,9 +10,11 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    // declare outlets
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var password: UITextField!
     
+    // declare models
     var db: FirebaseManager!
     
     override func viewDidLoad() {
@@ -32,15 +34,18 @@ class LoginViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        
         NotificationCenter.default.removeObserver(self)
     }
     
     func login() {
         
+        // check for empty fields
         if userName.text! != "" && password.text! != "" {
             
             do {
                 
+                // try to log in
                 try db.login(email: userName.text!, password: password.text!)
                 
             } catch let error {
@@ -58,12 +63,9 @@ class LoginViewController: UIViewController {
         login()
     }
     
-    @IBAction func passwordFinished(_ sender: Any) {
-        
-        login()
-    }
-    
     func userStatusChanged(notification: Notification) {
+        
+        // user is a lecturer
         if self.db.role == 20 {
             
             self.performSegue(withIdentifier: "LecturerLoginSegue", sender: nil)
@@ -75,6 +77,7 @@ class LoginViewController: UIViewController {
     }
     
     deinit {
+        
         NotificationCenter.default.removeObserver(self)
     }
 

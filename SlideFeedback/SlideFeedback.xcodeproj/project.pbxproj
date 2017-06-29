@@ -74,6 +74,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE2BF9081F05490E00372597 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				CE42047F1EFBEB09005955B7 /* HistoryTableViewCell.swift */,
+				CE106B951EE98B6500799305 /* SlideTableViewCell.swift */,
+			);
+			name = TableViewCells;
+			sourceTree = "<group>";
+		};
 		CE4204831EFFF589005955B7 /* Lecturer */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,17 +156,16 @@
 		CE9D01771EE82AD2005CD1D5 /* SlideFeedback */ = {
 			isa = PBXGroup;
 			children = (
-				CE42047F1EFBEB09005955B7 /* HistoryTableViewCell.swift */,
-				CE9D01781EE82AD2005CD1D5 /* AppDelegate.swift */,
-				CE106B951EE98B6500799305 /* SlideTableViewCell.swift */,
-				CE9D017C1EE82AD2005CD1D5 /* Main.storyboard */,
+				CE2BF9081F05490E00372597 /* TableViewCells */,
 				CE97D5101EF2AF360039BCF8 /* ViewControllers */,
 				CE97D5111EF2AF840039BCF8 /* Models */,
 				CE97D5121EF2AF890039BCF8 /* Extensions */,
-				CE9D017F1EE82AD2005CD1D5 /* Assets.xcassets */,
-				CE9D01811EE82AD2005CD1D5 /* LaunchScreen.storyboard */,
+				CE9D01781EE82AD2005CD1D5 /* AppDelegate.swift */,
+				CE9D017C1EE82AD2005CD1D5 /* Main.storyboard */,
 				CE106B911EE97C9500799305 /* GoogleService-Info.plist */,
 				CE9D01841EE82AD2005CD1D5 /* Info.plist */,
+				CE9D017F1EE82AD2005CD1D5 /* Assets.xcassets */,
+				CE9D01811EE82AD2005CD1D5 /* LaunchScreen.storyboard */,
 			);
 			path = SlideFeedback;
 			sourceTree = "<group>";
