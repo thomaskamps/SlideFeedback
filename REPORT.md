@@ -9,6 +9,6 @@ This problem I try to solve by building an application. When the lecturer uses m
 This idea is born during one of my earlier courses, where my team developed an idea for a system that provides adaptive slides during lectures. The feedback was a part of this, but some lecturers showed interest in primarily this part of the system. This drove me to choose the feedback on slides as subject for this project.
 
 Below is a screenshot of the student view:
-<img src="docs/screenshot1.png" width="48">
+<img src="doc/screenshot1.png" width="48">
 
 ## Techn
