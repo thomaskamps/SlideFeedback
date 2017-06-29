@@ -21,3 +21,33 @@ Lecturers interface gemaakt, rollen voor users mogelijk gemaakt. Automatisch aan
 
 *Donderdag(dag8):*
 Room-identifiers veranderd naar dirNames (ipv Naam), daar deze uniek zijn. Struct gemaakt voor alle data van een Slideset, geïntegreerd in code samen met andere verbeteringen. Code opgeschoond en klein beetje styling aangescherpt. Firebase volledig afgezonderd in model.
+
+*Vrijdag(dag9):*
+Presentaties. Paar kleine bugs verwijderd.
+
+*Maandag(dag10):*
+Layout opgeknapt. Registratiemogelijkheid toegevoegd en login verbeterd.
+
+*Dinsdag(dag11):*
+Tabbar controller toegevoegd met extra views voor history en settings(logout).
+
+*Woensdag(dag12):*
+Veel tijd verspild aan bugs fixen. (Baaldagje)
+
+*Donderdag(dag13):*
+Feedback zowel voor studenten als voor docenten opslaan in Firebase voor history mogelijkheid. 
+
+*Vrijdag(dag14):*
+Presentaties. Paar gevonden bugs gelijk verwijderd.
+
+*Maandag(dag15):*
+Fixed some annoying bugs with ending lectures. Worked on reviewing history.
+
+*Dinsdag(dag16):*
+Eindelijk, het terugkijken van gehouden presentaties met feedback is mogelijk. Bugfixing as always.
+
+*Woensdag(dag17):*
+Grote verbeterslag in hoeveelheid code behaald door views te mergen tussen student en docent. Verder nog andere kleinere verbeteringen in code doorgevoerd. Real-time feedback aan de kant van de docent wordt nu netjes verwerkt in plaats van weergegeven met een alert.
+
+*Donderdag(dag18):*
+Laatste dag. Met name tijd besteed aan opschonen en net maken van de codebase. Daarnaast demo gemaakt en uiteraard bezig geweest met het verslag.
